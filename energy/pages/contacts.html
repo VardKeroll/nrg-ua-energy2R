@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Контакти компанії Енергія - зв'яжіться з нами">
+    <title>Контакти - Енергія</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .page-hero {
+            background: linear-gradient(135deg, #1a365d 0%, #2d5a9e 100%);
+            padding: 80px 0;
+            text-align: center;
+            color: white;
+        }
+        .page-hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        .breadcrumbs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            font-size: 15px;
+            opacity: 0.9;
+        }
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+        .contacts-section {
+            padding: 80px 0;
+        }
+        .contacts-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        .contact-card {
+            text-align: center;
+            padding: 40px 25px;
+            background: var(--bg-white);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-xl);
+            transition: var(--transition);
+        }
+        .contact-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+        }
+        .contact-card-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            border-radius: 50%;
+            color: white;
+            font-size: 28px;
+        }
+        .contact-card h3 {
+            font-size: 18px;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+        }
+        .contact-card p {
+            font-size: 16px;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        .contact-card a {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        .contact-card a:hover {
+            text-decoration: underline;
+        }
+        .contacts-main {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+        .contact-form-section h2 {
+            font-size: 32px;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+        .contact-form-section > p {
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+        .contact-form-wrapper {
+            padding: 0;
+            box-shadow: none;
+        }
+        .map-section h2 {
+            font-size: 32px;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+        .map-section > p {
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+        .map-container {
+            height: 400px;
+            background: var(--bg-light);
+            border-radius: var(--radius-xl);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--border-color);
+        }
+        .map-placeholder {
+            text-align: center;
+            color: var(--text-light);
+        }
+        .map-placeholder i {
+            font-size: 60px;
+            margin-bottom: 15px;
+            display: block;
+        }
+        .departments {
+            padding: 80px 0;
+            background: var(--bg-light);
+        }
+        .departments-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .department-card {
+            background: var(--bg-white);
+            padding: 35px;
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-sm);
+        }
+        .department-card h3 {
+            font-size: 20px;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .department-card h3 i {
+            color: var(--primary-color);
+        }
+        .department-card ul {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .department-card li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-color);
+        }
+        .department-card li i {
+            color: var(--text-light);
+            width: 20px;
+        }
+        .department-card li a {
+            color: var(--primary-color);
+        }
+        .faq {
+            padding: 80px 0;
+        }
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            margin-bottom: 15px;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        .faq-item.active {
+            border-color: var(--primary-color);
+        }
+        .faq-question {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 25px;
+            background: var(--bg-white);
+            cursor: pointer;
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--text-dark);
+            transition: var(--transition);
+        }
+        .faq-question:hover {
+            background: var(--bg-light);
+        }
+        .faq-question i {
+            font-size: 14px;
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+        .faq-answer {
+            padding: 0 25px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .faq-item.active .faq-answer {
+            padding: 0 25px 25px;
+            max-height: 500px;
+        }
+        .faq-answer p {
+            color: var(--text-color);
+            line-height: 1.7;
+        }
+        @media (max-width: 992px) {
+            .contacts-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .contacts-main {
+                grid-template-columns: 1fr;
+            }
+            .departments-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 576px) {
+            .contacts-grid {
+                grid-template-columns: 1fr;
+            }
+            .departments-grid {
+                grid-template-columns: 1fr;
+            }
+            .page-hero h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-content">
+                <div class="top-contacts">
+                    <a href="tel:+380441234567"><i class="fas fa-phone"></i> +38 (044) 123-45-67</a>
+                    <a href="mailto:info@energia.ua"><i class="fas fa-envelope"></i> info@energia.ua</a>
+                </div>
+                <div class="top-info">
+                    <span><i class="fas fa-clock"></i> Пн-Пт: 9:00-18:00</span>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="../index.html" class="logo">
+                    <span class="logo-icon"><i class="fas fa-bolt"></i></span>
+                    <span class="logo-text">ЕНЕРГІЯ</span>
+                </a>
+                
+                <nav class="main-nav" id="mainNav">
+                    <ul class="nav-list">
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link">Продукція <i class="fas fa-chevron-down"></i></a>
+                            <div class="dropdown-menu">
+                                <a href="domophones.html"><i class="fas fa-door-open"></i> Домофони</a>
+                                <a href="video.html"><i class="fas fa-video"></i> Відеоспостереження</a>
+                                <a href="access.html"><i class="fas fa-key"></i> Контроль доступу</a>
+                                <a href="intercom.html"><i class="fas fa-building"></i> Інтеркоми</a>
+                                <a href="locks.html"><i class="fas fa-lock"></i> Електрозамки</a>
+                                <a href="accessories.html"><i class="fas fa-tools"></i> Аксесуари</a>
+                            </div>
+                        </li>
+                        <li class="nav-item"><a href="about.html" class="nav-link">Про нас</a></li>
+                        <li class="nav-item"><a href="services.html" class="nav-link">Послуги</a></li>
+                        <li class="nav-item"><a href="partners.html" class="nav-link">Партнерам</a></li>
+                        <li class="nav-item"><a href="news.html" class="nav-link">Новини</a></li>
+                        <li class="nav-item"><a href="contacts.html" class="nav-link">Контакти</a></li>
+                    </ul>
+                </nav>
+
+                <div class="header-actions">
+                    <button class="search-btn" id="searchBtn" aria-label="Пошук">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <a href="cart.html" class="cart-btn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Меню">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>Контакти</h1>
+            <div class="breadcrumbs">
+                <a href="../index.html">Головна</a>
+                <span>/</span>
+                <span>Контакти</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Cards -->
+    <section class="contacts-section">
+        <div class="container">
+            <div class="contacts-grid">
+                <div class="contact-card">
+                    <div class="contact-card-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Адреса</h3>
+                    <p>м. Київ, вул. Хрещатик, 1<br>офіс 215</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-card-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3>Телефон</h3>
+                    <p><a href="tel:+380441234567">+38 (044) 123-45-67</a><br><a href="tel:+380501234567">+38 (050) 123-45-67</a></p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-card-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email</h3>
+                    <p><a href="mailto:info@energia.ua">info@energia.ua</a><br><a href="mailto:sales@energia.ua">sales@energia.ua</a></p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-card-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Графік роботи</h3>
+                    <p>Пн-Пт: 9:00-18:00<br>Сб: 10:00-15:00</p>
+                </div>
+            </div>
+
+            <div class="contacts-main">
+                <div class="contact-form-section">
+                    <h2>Напишіть нам</h2>
+                    <p>Заповніть форму і ми зв'яжемося з вами найближчим часом</p>
+                    <div class="contact-form-wrapper">
+                        <form class="contact-form" id="contactForm">
+                            <div class="form-group">
+                                <input type="text" name="name" placeholder="Ваше ім'я *" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" name="phone" placeholder="Телефон *" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" name="email" placeholder="Email">
+                            </div>
+                            <div class="form-group">
+                                <select name="subject" style="width: 100%; padding: 15px 20px; font-size: 15px; border: 2px solid var(--border-color); border-radius: var(--radius-md); outline: none; background: white; color: var(--text-color);">
+                                    <option value="">Тема звернення</option>
+                                    <option value="consultation">Консультація</option>
+                                    <option value="order">Замовлення</option>
+                                    <option value="service">Сервіс</option>
+                                    <option value="partnership">Партнерство</option>
+                                    <option value="other">Інше</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <textarea name="message" placeholder="Ваше повідомлення" rows="5"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Надіслати повідомлення</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="map-section">
+                    <h2>Як нас знайти</h2>
+                    <p>Ми знаходимося в центрі Києва, поруч зі станцією метро Хрещатик</p>
+                    <div class="map-container">
+                        <div class="map-placeholder">
+                            <i class="fas fa-map-marked-alt"></i>
+                            <p>Карта Google Maps<br><small>м. Київ, вул. Хрещатик, 1</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Departments -->
+    <section class="departments">
+        <div class="container">
+            <div class="section-header">
+                <h2>Наші відділи</h2>
+                <p>Зв'яжіться з потрібним відділом напряму</p>
+            </div>
+            <div class="departments-grid">
+                <div class="department-card">
+                    <h3><i class="fas fa-shopping-cart"></i> Відділ продажів</h3>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> <a href="tel:+380441234567">+38 (044) 123-45-67</a></li>
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:sales@energia.ua">sales@energia.ua</a></li>
+                        <li><i class="fas fa-clock"></i> Пн-Пт: 9:00-18:00</li>
+                    </ul>
+                </div>
+                <div class="department-card">
+                    <h3><i class="fas fa-tools"></i> Технічна підтримка</h3>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> <a href="tel:+380441234568">+38 (044) 123-45-68</a></li>
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:support@energia.ua">support@energia.ua</a></li>
+                        <li><i class="fas fa-clock"></i> Пн-Пт: 9:00-18:00</li>
+                    </ul>
+                </div>
+                <div class="department-card">
+                    <h3><i class="fas fa-handshake"></i> Партнерський відділ</h3>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> <a href="tel:+380441234569">+38 (044) 123-45-69</a></li>
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:partners@energia.ua">partners@energia.ua</a></li>
+                        <li><i class="fas fa-clock"></i> Пн-Пт: 9:00-17:00</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq">
+        <div class="container">
+            <div class="section-header">
+                <h2>Часті запитання</h2>
+                <p>Відповіді на популярні питання наших клієнтів</p>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        Як зробити замовлення?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Ви можете оформити замовлення через наш сайт, зателефонувавши менеджерам або відвідавши наш офіс. При оформленні онлайн-замовлення наш менеджер зв'яжеться з вами для підтвердження деталей.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        Які способи оплати доступні?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Ми приймаємо готівкову оплату, безготівковий розрахунок для юридичних осіб, оплату картками Visa/Mastercard, а також накладений платіж при доставці Новою Поштою.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        Чи є у вас монтажні послуги?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Так, ми надаємо повний комплекс монтажних послуг: встановлення домофонів, систем відеоспостереження та контролю доступу. Роботи виконують сертифіковані спеціалісти з гарантією.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        Яка гарантія на товари?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Гарантія на всі товари становить від 12 до 60 місяців залежно від виробника та категорії товару. Гарантійне обслуговування здійснюється в нашому авторизованому сервісному центрі.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        Як стати партнером?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Для оформлення партнерства зверніться до нашого партнерського відділу за телефоном або email. Ми пропонуємо спеціальні умови для дилерів, монтажних організацій та інтеграторів.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="../index.html" class="footer-logo">
+                        <span class="logo-icon"><i class="fas fa-bolt"></i></span>
+                        <span class="logo-text">ЕНЕРГІЯ</span>
+                    </a>
+                    <p>Надійний дистриб'ютор із сильною логістикою, широким асортиментом та фокусом на розвиток партнерів.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+                    </div>
+                </div>
+                <div class="footer-nav">
+                    <h4>Інформація</h4>
+                    <ul>
+                        <li><a href="about.html">Про компанію</a></li>
+                        <li><a href="services.html">Послуги</a></li>
+                        <li><a href="delivery.html">Доставка та оплата</a></li>
+                        <li><a href="warranty.html">Гарантія</a></li>
+                        <li><a href="partners.html">Партнерам</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contacts">
+                    <h4>Контакти</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> м. Київ, вул. Хрещатик, 1</p>
+                    <p><i class="fas fa-phone"></i> <a href="tel:+380441234567">+38 (044) 123-45-67</a></p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:info@energia.ua">info@energia.ua</a></p>
+                    <p><i class="fas fa-clock"></i> Пн-Пт: 9:00-18:00</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Енергія. Всі права захищено.</p>
+                <div class="footer-links">
+                    <a href="privacy.html">Політика конфіденційності</a>
+                    <a href="terms.html">Умови використання</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" aria-label="Вгору">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script src="../js/main.js"></script>
+    <script>
+        function toggleFaq(element) {
+            const faqItem = element.parentElement;
+            faqItem.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

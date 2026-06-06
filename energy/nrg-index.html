@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="NRG-UA — надійний національний оператор FMCG товарів з 27-річною історією. Мультибрендова компанія, орієнтована на клієнта з доступними цінами та високим сервісом.">
+    <meta name="keywords" content="FMCG, дистриб'ютор, товари для життя, національний оператор, мультибрендова компанія, доступні ціни, високий сервіс">
+    
+    <title>NRG-UA | Надійний національний оператор FMCG товарів</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/nrg-style.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-logo">
+            <img src="images/favicon.svg" alt="Loading..." width="80" height="80">
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header-inner">
+                <!-- Logo -->
+                <a href="/" class="logo">
+                    <img src="images/nrg-logo.svg" alt="NRG-UA Supply Partner" class="logo-image" height="50">
+                </a>
+
+                <!-- Navigation -->
+                <nav class="main-nav" id="mainNav">
+                    <ul class="nav-list">
+                        <li><a href="#" class="nav-link active" data-i18n="nav.home">Головна</a></li>
+                        <li><a href="pages/about.html" class="nav-link" data-i18n="nav.about">Про нас</a></li>
+                        <li class="nav-dropdown">
+                            <a href="pages/catalog.html" class="nav-link">
+                                <span data-i18n="nav.catalog">Каталог</span> <i class="fas fa-chevron-down"></i>
+                            </a>
+                            <div class="dropdown-menu">
+                                <a href="#"><i class="fas fa-lightbulb"></i> Світлотехніка</a>
+                                <a href="#"><i class="fas fa-battery-full"></i> Елементи живлення</a>
+                                <a href="#"><i class="fas fa-seedling"></i> Сад і город</a>
+                                <a href="#"><i class="fas fa-spray-can-sparkles"></i> Господарські товари</a>
+                                <a href="#"><i class="fas fa-utensils"></i> Товари для кухні</a>
+                                <a href="#"><i class="fas fa-plug"></i> Електротовари</a>
+                            </div>
+                        </li>
+                        <li><a href="pages/brands.html" class="nav-link" data-i18n="nav.brands">Бренди</a></li>
+                        <li><a href="pages/partners.html" class="nav-link" data-i18n="nav.partners">Партнерам</a></li>
+                        <li><a href="pages/news.html" class="nav-link" data-i18n="nav.news">Новини</a></li>
+                        <li><a href="pages/contacts.html" class="nav-link" data-i18n="nav.contacts">Контакти</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Header Actions -->
+                <div class="header-actions">
+                    <!-- Language Switcher -->
+                    <div class="lang-switcher">
+                        <button class="lang-btn active" data-lang="uk">UA</button>
+                        <button class="lang-btn" data-lang="en">EN</button>
+                    </div>
+                    
+                    <!-- Login Button (for non-authenticated users) -->
+                    <a href="pages/nrg-cabinet.html" class="btn btn-outline btn-sm" id="loginBtn">
+                        <i class="fas fa-user"></i>
+                        <span data-i18n="nav.login">Увійти</span>
+                    </a>
+                    
+                    <!-- B2B Portal Button (for authenticated users) -->
+                    <a href="https://nrgportal.com.ua" class="btn btn-primary btn-sm" id="b2bPortalBtn" style="display: none;" target="_blank" title="Тільки для зареєстрованих клієнтів">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span data-i18n="nav.b2b_portal">B2B Portal</span>
+                    </a>
+                    
+                    <!-- Mobile Menu Toggle -->
+                    <button class="mobile-toggle" id="mobileToggle" aria-label="Меню">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <!-- Video Background -->
+        <div class="hero-bg">
+            <div class="hero-video-wrap">
+                <video autoplay muted loop playsinline class="hero-video" poster="images/hero-poster.jpg">
+                    <source src="videos/hero-bg.mp4" type="video/mp4">
+                </video>
+                <div class="hero-overlay"></div>
+            </div>
+            <!-- Animated Grid -->
+            <div class="hero-grid"></div>
+        </div>
+
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="hero-badge" data-animate="fade-up">
+                        <span class="badge-dot"></span>
+                        FMCG товари для життя
+                    </div>
+                    
+                    <h1 class="hero-title" data-animate="fade-up" data-delay="100">
+                        Надійний національний оператор<br>
+                        <span class="text-gradient">мультибрендова компанія</span>
+                    </h1>
+                    
+                    <p class="hero-description" data-animate="fade-up" data-delay="200">
+                        Національна дистриб'юторська компанія з портфелем товарів FMCG, орієнтованим на клієнта та потреби покупця в необхідних товарах для життя за доступними цінами з високим сервісом.
+                    </p>
+                    
+                    <div class="hero-actions" data-animate="fade-up" data-delay="300">
+                        <a href="pages/partners.html" class="btn btn-primary btn-lg">
+                            <span>Стати партнером</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="pages/catalog.html" class="btn btn-ghost btn-lg">
+                            <span>Переглянути каталог</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hero Stats -->
+                <div class="hero-stats" data-animate="fade-up" data-delay="400">
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="27">0</span>
+                        <span class="stat-label">років на ринку</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="8041">0</span>
+                        <span class="stat-label">постійних клієнтів</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="15">0</span>
+                        <span class="stat-label">партнерів по Україні</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="40">0</span>
+                        <span class="stat-label">менеджерів з продажу</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator" data-animate="fade-up" data-delay="500">
+            <span>Прокрутіть вниз</span>
+            <div class="scroll-arrow">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coverage Map Section -->
+    <section class="coverage-section" id="coverage">
+        <div class="container">
+            <div class="section-header" data-animate="fade-up">
+                <span class="section-badge">Логістика</span>
+                <h2 class="section-title">Покриття по Україні</h2>
+                <p class="section-subtitle">
+                    Розгалужена мережа складів та логістичних центрів забезпечує 
+                    доставку товарів протягом 1-3 днів у будь-яку точку країни
+                </p>
+            </div>
+
+            <div class="coverage-content">
+                <!-- Міста філіалів — інтерактивні картки -->
+                <div class="cities-grid" data-animate="fade-up">
+
+                    <div class="city-card city-main">
+                        <div class="city-icon-wrap main">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="city-info">
+                            <h4>Київ</h4>
+                            <span class="city-type">Головний офіс</span>
+                            <p><i class="fas fa-map-marker-alt"></i> вул. Хрещатик, 1</p>
+                            <p><i class="fas fa-phone"></i> <a href="tel:+380441234567">+38 (044) 123-45-67</a></p>
+                        </div>
+                    </div>
+
+                    <div class="city-card">
+                        <div class="city-icon-wrap">
+                            <i class="fas fa-location-dot"></i>
+                        </div>
+                        <div class="city-info">
+                            <h4>Львів</h4>
+                            <span class="city-type">Регіональний офіс</span>
+                            <p><i class="fas fa-map-marker-alt"></i> вул. Городоцька, 50</p>
+                            <p><i class="fas fa-phone"></i> <a href="tel:+380321234567">+38 (032) 123-45-67</a></p>
+                        </div>
+                    </div>
+
+                    <div class="city-card">
+                        <div class="city-icon-wrap">
+                            <i class="fas fa-location-dot"></i>
+                        </div>
+                        <div class="city-info">
+                            <h4>Дніпро</h4>
+                            <span class="city-type">Регіональний офіс</span>
+                            <p><i class="fas fa-map-marker-alt"></i> просп. Яворницького, 100</p>
+                            <p><i class="fas fa-phone"></i> <a href="tel:+380561234567">+38 (056) 123-45-67</a></p>
+                        </div>
+                    </div>
+
+                    <div class="city-card">
+                        <div class="city-icon-wrap">
+                            <i class="fas fa-location-dot"></i>
+                        </div>
+                        <div class="city-info">
+                            <h4>Харків</h4>
+                            <span class="city-type">Логістичний центр</span>
+                            <p><i class="fas fa-map-marker-alt"></i> вул. Полтавський Шлях, 150</p>
+                            <p><i class="fas fa-phone"></i> <a href="tel:+380571234567">+38 (057) 123-45-67</a></p>
+                        </div>
+                    </div>
+
+                    <div class="city-card">
+                        <div class="city-icon-wrap">
+                            <i class="fas fa-location-dot"></i>
+                        </div>
+                        <div class="city-info">
+                            <h4>Одеса</h4>
+                            <span class="city-type">Регіональний офіс</span>
+                            <p><i class="fas fa-map-marker-alt"></i> вул. Дерибасівська, 10</p>
+                            <p><i class="fas fa-phone"></i> <a href="tel:+380481234567">+38 (048) 123-45-67</a></p>
+                        </div>
+                    </div>
+
+                    <div class="city-card">
+                        <div class="city-icon-wrap">
+                            <i class="fas fa-location-dot"></i>
+                        </div>
+                        <div class="city-info">
+                            <h4>Вінниця</h4>
+                            <span class="city-type">Регіональний офіс</span>
+                            <p><i class="fas fa-map-marker-alt"></i> вул. Соборна, 25</p>
+                            <p><i class="fas fa-phone"></i> <a href="tel:+380431234567">+38 (043) 123-45-67</a></p>
+                        </div>
+                    </div>
+
+                    <div class="city-card">
+                        <div class="city-icon-wrap warehouse">
+                            <i class="fas fa-warehouse"></i>
+                        </div>
+                        <div class="city-info">
+                            <h4>Запоріжжя</h4>
+                            <span class="city-type">Склад</span>
+                            <p><i class="fas fa-map-marker-alt"></i> просп. Соборний, 200</p>
+                            <p><i class="fas fa-phone"></i> <a href="tel:+380611234567">+38 (061) 123-45-67</a></p>
+                        </div>
+                    </div>
+
+                    <div class="city-card">
+                        <div class="city-icon-wrap warehouse">
+                            <i class="fas fa-warehouse"></i>
+                        </div>
+                        <div class="city-info">
+                            <h4>Бровари</h4>
+                            <span class="city-type">Центральний склад</span>
+                            <p><i class="fas fa-map-marker-alt"></i> вул. Промислова, 15</p>
+                            <p><i class="fas fa-phone"></i> <a href="tel:+380441234568">+38 (044) 123-45-68</a></p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Coverage Info Cards -->
+
+                            <!-- ===== КОНТУР + МЕЖІ ОБЛАСТЕЙ ===== -->
+
+                            <!-- Закарпатська -->
+                            <path class="oblast" data-name="Закарпатська" d="M138,382 L155,340 L148,300 L130,270 L115,245 L108,215 L125,195 L150,178 L155,148 L170,130 L155,115 L145,95 L160,85 L178,90 L195,100 L200,125 L218,140 L215,170 L225,195 L218,225 L228,255 L215,290 L205,320 L210,355 L195,378 L175,390 Z"/>
+                            <!-- Львівська -->
+                            <path class="oblast" data-name="Львівська" d="M195,100 L230,88 L265,78 L295,82 L310,100 L305,130 L295,155 L278,170 L265,195 L248,215 L235,240 L228,255 L218,225 L225,195 L215,170 L218,140 L200,125 Z"/>
+                            <!-- Волинська -->
+                            <path class="oblast" data-name="Волинська" d="M230,88 L265,78 L295,82 L310,100 L340,95 L368,88 L380,100 L375,130 L368,155 L350,170 L335,185 L315,180 L305,155 L305,130 L295,155 L278,170 L265,195 L248,215 L235,240 L228,255 Z M228,255 L218,225 L225,195 L215,170 L218,140 L230,88"/>
+                            <!-- Волинська (спрощена) -->
+                            <path class="oblast" data-name="Волинська" d="M265,78 L340,72 L380,80 L385,110 L375,145 L358,168 L335,185 L315,180 L305,155 L305,130 L295,105 L265,78 Z"/>
+                            <!-- Рівненська -->
+                            <path class="oblast" data-name="Рівненська" d="M340,72 L415,68 L435,80 L440,108 L430,138 L415,158 L395,170 L375,168 L358,168 L375,145 L385,110 Z"/>
+                            <!-- Тернопільська -->
+                            <path class="oblast" data-name="Тернопільська" d="M295,82 L340,72 L385,110 L375,145 L358,168 L335,185 L315,180 L305,155 L305,130 Z"/>
+                            <!-- Хмельницька -->
+                            <path class="oblast" data-name="Хмельницька" d="M375,168 L415,158 L450,162 L468,182 L460,215 L445,238 L425,252 L400,258 L380,248 L365,228 L358,205 L358,185 L358,168 Z"/>
+                            <!-- Житомирська -->
+                            <path class="oblast" data-name="Житомирська" d="M415,68 L510,62 L545,72 L555,100 L548,135 L535,162 L510,178 L485,185 L465,195 L450,215 L445,238 L445,215 L460,195 L450,165 L430,138 L440,108 L435,80 Z"/>
+                            <!-- Вінницька -->
+                            <path class="oblast" data-name="Вінницька" d="M358,185 L358,205 L365,228 L380,248 L400,258 L415,278 L408,305 L390,320 L368,328 L348,318 L330,300 L325,275 L338,252 L345,228 L350,205 Z"/>
+                            <!-- Київська -->
+                            <path class="oblast" data-name="Київська" d="M510,62 L615,58 L640,72 L645,100 L635,135 L618,158 L598,170 L575,178 L555,185 L535,195 L515,205 L500,222 L485,238 L470,248 L455,238 L450,215 L465,195 L485,185 L510,178 L535,162 L548,135 L555,100 L545,72 Z"/>
+                            <!-- Чернігівська -->
+                            <path class="oblast" data-name="Чернігівська" d="M510,62 L615,58 L720,52 L795,55 L810,75 L805,108 L788,138 L768,158 L745,168 L720,172 L695,168 L668,165 L645,158 L635,135 L640,100 L615,72 Z"/>
+                            <!-- Сумська -->
+                            <path class="oblast" data-name="Сумська" d="M720,52 L820,48 L868,58 L878,85 L872,118 L858,145 L835,162 L810,170 L788,168 L768,158 L788,138 L805,108 L810,75 L795,55 Z"/>
+                            <!-- Полтавська -->
+                            <path class="oblast" data-name="Полтавська" d="M645,158 L695,168 L720,172 L745,168 L768,158 L788,168 L808,178 L815,205 L808,235 L792,258 L770,272 L745,278 L718,272 L695,260 L675,245 L658,225 L648,205 L645,182 Z"/>
+                            <!-- Харківська -->
+                            <path class="oblast" data-name="Харківська" d="M788,168 L835,162 L858,145 L878,118 L898,125 L915,148 L918,178 L910,208 L895,232 L872,248 L848,258 L825,260 L808,255 L792,258 L808,235 L815,205 L808,178 Z"/>
+                            <!-- Луганська -->
+                            <path class="oblast" data-name="Луганська" d="M858,145 L878,118 L898,125 L915,148 L918,178 L928,198 L938,218 L942,242 L935,268 L918,288 L895,300 L870,308 L848,300 L828,285 L815,265 L825,260 L848,258 L872,248 L895,232 L910,208 L918,178 Z"/>
+                            <!-- Дніпропетровська -->
+                            <path class="oblast" data-name="Дніпропетровська" d="M658,225 L675,245 L695,260 L718,272 L745,278 L770,272 L792,258 L808,265 L815,290 L808,318 L790,340 L768,355 L742,362 L715,358 L690,345 L668,328 L650,305 L642,280 L648,258 Z"/>
+                            <!-- Донецька -->
+                            <path class="oblast" data-name="Донецька" d="M828,285 L848,300 L870,308 L895,300 L918,288 L935,305 L938,328 L928,352 L912,372 L888,388 L862,395 L835,392 L812,380 L795,360 L790,340 L808,318 L815,290 L808,265 L825,260 Z"/>
+                            <!-- Запорізька -->
+                            <path class="oblast" data-name="Запорізька" d="M715,358 L742,362 L768,355 L790,340 L795,360 L812,380 L812,405 L800,428 L778,442 L752,448 L725,442 L702,428 L688,408 L685,385 L690,362 Z"/>
+                            <!-- Херсонська -->
+                            <path class="oblast" data-name="Херсонська" d="M620,365 L650,358 L668,365 L685,385 L688,408 L678,432 L660,448 L635,458 L608,460 L582,452 L562,438 L555,415 L562,392 L580,378 Z"/>
+                            <!-- Миколаївська -->
+                            <path class="oblast" data-name="Миколаївська" d="M510,320 L542,315 L568,318 L590,330 L610,345 L620,365 L608,382 L580,395 L555,398 L528,392 L505,378 L492,358 L495,335 Z"/>
+                            <!-- Кіровоградська -->
+                            <path class="oblast" data-name="Кіровоградська" d="M485,238 L510,228 L535,232 L558,240 L575,258 L580,282 L572,308 L555,325 L532,335 L508,335 L488,322 L475,302 L475,278 L478,258 Z"/>
+                            <!-- Черкаська -->
+                            <path class="oblast" data-name="Черкаська" d="M500,222 L535,215 L558,225 L575,242 L575,258 L558,240 L535,232 L510,228 L490,238 L475,255 L465,275 L455,298 L445,315 L430,325 L415,318 L405,298 L408,275 L415,255 L430,245 L445,235 L460,228 Z"/>
+                            <!-- Одеська -->
+                            <path class="oblast" data-name="Одеська" d="M210,355 L235,345 L258,338 L285,338 L310,342 L330,355 L345,372 L350,395 L342,418 L325,438 L300,455 L272,465 L245,465 L220,458 L200,442 L185,420 L182,395 L195,375 Z"/>
+                            <!-- Чернівецька -->
+                            <path class="oblast" data-name="Чернівецька" d="M195,378 L210,355 L225,345 L238,348 L252,355 L260,370 L255,392 L242,408 L225,415 L208,408 L198,392 Z"/>
+                            <!-- Івано-Франківська -->
+                            <path class="oblast" data-name="Івано-Франківська" d="M175,390 L195,378 L198,392 L208,408 L225,415 L232,432 L225,455 L208,465 L192,462 L178,448 L165,428 L158,408 L160,390 Z"/>
+
+                            <!-- ===== КРИМ ===== -->
+                            <path class="oblast oblast-crimea" data-name="АР Крим" d="M562,438 L588,435 L615,432 L642,438 L665,445 L682,455 L688,470 L682,490 L668,510 L648,525 L625,535 L598,538 L572,532 L550,518 L535,500 L530,480 L535,462 L548,448 Z"/>
+
+                            <!-- ===== ЛІНІЇ З'ЄДНАННЯ ВІД КИЄВА ===== -->
+                            <g class="connection-lines">
+                                <line x1="530" y1="135" x2="218" y2="195" stroke="rgba(0,212,255,0.35)" stroke-width="1" stroke-dasharray="6,4"/>
+                                <line x1="530" y1="135" x2="415" y2="295" stroke="rgba(0,212,255,0.35)" stroke-width="1" stroke-dasharray="6,4"/>
+                                <line x1="530" y1="135" x2="270" y2="438" stroke="rgba(0,212,255,0.35)" stroke-width="1" stroke-dasharray="6,4"/>
+                                <line x1="530" y1="135" x2="725" y2="310" stroke="rgba(0,212,255,0.35)" stroke-width="1" stroke-dasharray="6,4"/>
+                                <line x1="530" y1="135" x2="858" y2="195" stroke="rgba(0,212,255,0.35)" stroke-width="1" stroke-dasharray="6,4"/>
+                                <line x1="530" y1="135" x2="752" y2="435" stroke="rgba(0,212,255,0.35)" stroke-width="1" stroke-dasharray="6,4"/>
+                                <line x1="530" y1="135" x2="558" y2="130" stroke="rgba(0,212,255,0.25)" stroke-width="1" stroke-dasharray="4,3"/>
+                            </g>
+
+                            <!-- ===== МАРКЕРИ ФІЛІАЛІВ ===== -->
+                            <!-- Київ - Головний офіс -->
+                            <g class="branch-point" data-city="Київ" data-type="Головний офіс" data-address="вул. Хрещатик, 1" data-phone="+38 (044) 123-45-67">
+                                <circle class="pulse-ring"  cx="530" cy="135" r="22" fill="none" stroke="#00D4FF" stroke-width="1.5" opacity="0"/>
+                                <circle class="pulse-ring2" cx="530" cy="135" r="14" fill="none" stroke="#00D4FF" stroke-width="1.5" opacity="0"/>
+                                <circle cx="530" cy="135" r="9" fill="#00D4FF" filter="url(#gFM)"/>
+                                <circle cx="530" cy="135" r="5" fill="#fff"/>
+                                <text x="530" y="118" text-anchor="middle" fill="#00D4FF" font-size="13" font-weight="700" font-family="Inter,sans-serif">Київ</text>
+                            </g>
+                            <!-- Бровари -->
+                            <g class="branch-point" data-city="Бровари" data-type="Центральний склад" data-address="вул. Промислова, 15" data-phone="+38 (044) 123-45-68">
+                                <circle class="pulse-ring" cx="558" cy="130" r="13" fill="none" stroke="#6366F1" stroke-width="1.5" opacity="0"/>
+                                <circle cx="558" cy="130" r="6" fill="#6366F1" filter="url(#gF)"/>
+                                <circle cx="558" cy="130" r="3" fill="#fff"/>
+                            </g>
+                            <!-- Львів -->
+                            <g class="branch-point" data-city="Львів" data-type="Регіональний офіс" data-address="вул. Городоцька, 50" data-phone="+38 (032) 123-45-67">
+                                <circle class="pulse-ring" cx="218" cy="195" r="13" fill="none" stroke="#6366F1" stroke-width="1.5" opacity="0"/>
+                                <circle cx="218" cy="195" r="6" fill="#6366F1" filter="url(#gF)"/>
+                                <circle cx="218" cy="195" r="3" fill="#fff"/>
+                                <text x="218" y="183" text-anchor="middle" fill="#CBD5E1" font-size="11" font-family="Inter,sans-serif">Львів</text>
+                            </g>
+                            <!-- Вінниця -->
+                            <g class="branch-point" data-city="Вінниця" data-type="Регіональний офіс" data-address="вул. Соборна, 25" data-phone="+38 (043) 123-45-67">
+                                <circle class="pulse-ring" cx="362" cy="268" r="13" fill="none" stroke="#6366F1" stroke-width="1.5" opacity="0"/>
+                                <circle cx="362" cy="268" r="6" fill="#6366F1" filter="url(#gF)"/>
+                                <circle cx="362" cy="268" r="3" fill="#fff"/>
+                                <text x="362" y="256" text-anchor="middle" fill="#CBD5E1" font-size="11" font-family="Inter,sans-serif">Вінниця</text>
+                            </g>
+                            <!-- Одеса -->
+                            <g class="branch-point" data-city="Одеса" data-type="Регіональний офіс" data-address="вул. Дерибасівська, 10" data-phone="+38 (048) 123-45-67">
+                                <circle class="pulse-ring" cx="268" cy="438" r="13" fill="none" stroke="#6366F1" stroke-width="1.5" opacity="0"/>
+                                <circle cx="268" cy="438" r="6" fill="#6366F1" filter="url(#gF)"/>
+                                <circle cx="268" cy="438" r="3" fill="#fff"/>
+                                <text x="268" y="426" text-anchor="middle" fill="#CBD5E1" font-size="11" font-family="Inter,sans-serif">Одеса</text>
+                            </g>
+                            <!-- Дніпро -->
+                            <g class="branch-point" data-city="Дніпро" data-type="Регіональний офіс" data-address="просп. Яворницького, 100" data-phone="+38 (056) 123-45-67">
+                                <circle class="pulse-ring" cx="725" cy="310" r="13" fill="none" stroke="#6366F1" stroke-width="1.5" opacity="0"/>
+                                <circle cx="725" cy="310" r="6" fill="#6366F1" filter="url(#gF)"/>
+                                <circle cx="725" cy="310" r="3" fill="#fff"/>
+                                <text x="725" y="298" text-anchor="middle" fill="#CBD5E1" font-size="11" font-family="Inter,sans-serif">Дніпро</text>
+                            </g>
+                            <!-- Харків -->
+                            <g class="branch-point" data-city="Харків" data-type="Логістичний центр" data-address="вул. Полтавський Шлях, 150" data-phone="+38 (057) 123-45-67">
+                                <circle class="pulse-ring" cx="858" cy="195" r="13" fill="none" stroke="#6366F1" stroke-width="1.5" opacity="0"/>
+                                <circle cx="858" cy="195" r="6" fill="#6366F1" filter="url(#gF)"/>
+                                <circle cx="858" cy="195" r="3" fill="#fff"/>
+                                <text x="858" y="183" text-anchor="middle" fill="#CBD5E1" font-size="11" font-family="Inter,sans-serif">Харків</text>
+                            </g>
+                            <!-- Запоріжжя -->
+                            <g class="branch-point" data-city="Запоріжжя" data-type="Склад" data-address="просп. Соборний, 200" data-phone="+38 (061) 123-45-67">
+                                <circle class="pulse-ring" cx="752" cy="418" r="13" fill="none" stroke="#6366F1" stroke-width="1.5" opacity="0"/>
+                                <circle cx="752" cy="418" r="6" fill="#6366F1" filter="url(#gF)"/>
+                                <circle cx="752" cy="418" r="3" fill="#fff"/>
+                                <text x="780" y="422" text-anchor="start" fill="#CBD5E1" font-size="11" font-family="Inter,sans-serif">Запоріжжя</text>
+                            </g>
+                        </svg>
+
+                        <!-- Tooltip -->
+                        <div class="map-tooltip" id="mapTooltip">
+                            <div class="tooltip-city"></div>
+                            <div class="tooltip-type"></div>
+                            <div class="tooltip-detail"><i class="fas fa-map-marker-alt"></i> <span class="tooltip-address"></span></div>
+                            <div class="tooltip-detail"><i class="fas fa-phone"></i> <span class="tooltip-phone"></span></div>
+                        </div>
+                    </div>
+                </div>
+                        <svg id="ukraineMap" viewBox="0 0 1000 650" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="oblastGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#0d1c2e"/>
+                                    <stop offset="100%" style="stop-color:#0a1520"/>
+                                </linearGradient>
+                                <linearGradient id="oblastHover" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:rgba(0,212,255,0.25)"/>
+                                    <stop offset="100%" style="stop-color:rgba(99,102,241,0.15)"/>
+                                </linearGradient>
+                                <filter id="gF"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                                <filter id="gFM"><feGaussianBlur stdDeviation="7" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                            </defs>
+
+                            <!-- ===== ОБЛАСТІ УКРАЇНИ ===== -->
+                            <!-- Волинська -->
+                            <path class="oblast" id="ob-volyn" data-name="Волинська" d="M92,20 L200,20 L215,65 L205,120 L175,135 L130,125 L95,80 Z" />
+                            <!-- Рівненська -->
+                            <path class="oblast" id="ob-rivne" data-name="Рівненська" d="M200,20 L305,22 L318,70 L310,130 L230,140 L215,120 L205,65 Z" />
+                            <!-- Львівська -->
+                            <path class="oblast" id="ob-lviv" data-name="Львівська" d="M75,90 L95,80 L130,125 L175,135 L185,180 L165,220 L120,245 L80,230 L60,195 L55,140 Z" />
+                            <!-- Тернопільська -->
+                            <path class="oblast" id="ob-ternopil" data-name="Тернопільська" d="M175,135 L230,140 L240,185 L220,235 L185,250 L165,220 L185,180 Z" />
+                            <!-- Хмельницька -->
+                            <path class="oblast" id="ob-khmel" data-name="Хмельницька" d="M230,140 L310,130 L335,165 L330,220 L295,255 L255,265 L235,240 L240,185 Z" />
+                            <!-- Житомирська -->
+                            <path class="oblast" id="ob-zhytomyr" data-name="Житомирська" d="M305,22 L435,25 L460,80 L448,155 L390,180 L335,165 L318,70 Z" />
+                            <!-- Київська -->
+                            <path class="oblast" id="ob-kyiv" data-name="Київська" d="M435,25 L545,28 L570,80 L558,160 L510,195 L460,200 L448,155 L460,80 Z" />
+                            <!-- Чернігівська -->
+                            <path class="oblast" id="ob-chernihiv" data-name="Чернігівська" d="M435,25 L670,20 L690,70 L670,130 L610,145 L558,160 L545,28 Z" />
+                            <!-- Сумська -->
+                            <path class="oblast" id="ob-sumy" data-name="Сумська" d="M670,20 L810,22 L820,70 L790,130 L720,145 L690,130 L690,70 Z" />
+                            <!-- Полтавська -->
+                            <path class="oblast" id="ob-poltava" data-name="Полтавська" d="M610,145 L720,145 L740,200 L720,265 L650,285 L590,275 L560,235 L558,160 Z" />
+                            <!-- Харківська -->
+                            <path class="oblast" id="ob-kharkiv" data-name="Харківська" d="M720,145 L820,140 L860,175 L855,250 L810,290 L740,290 L720,265 L740,200 Z" />
+                            <!-- Луганська -->
+                            <path class="oblast" id="ob-luhansk" data-name="Луганська" d="M820,140 L960,145 L970,220 L940,295 L880,330 L820,310 L810,290 L855,250 L860,175 Z" />
+                            <!-- Донецька -->
+                            <path class="oblast" id="ob-donetsk" data-name="Донецька" d="M810,290 L880,330 L900,385 L870,430 L800,440 L740,415 L720,360 L740,290 Z" />
+                            <!-- Дніпропетровська -->
+                            <path class="oblast" id="ob-dnipro" data-name="Дніпропетровська" d="M590,275 L720,265 L740,360 L720,400 L660,420 L600,410 L560,370 L550,310 Z" />
+                            <!-- Запорізька -->
+                            <path class="oblast" id="ob-zaporizhzhia" data-name="Запорізька" d="M660,420 L740,415 L800,440 L800,490 L750,510 L680,505 L640,475 L630,445 Z" />
+                            <!-- Кіровоградська -->
+                            <path class="oblast" id="ob-kiro" data-name="Кіровоградська" d="M460,200 L558,160 L560,235 L590,275 L550,310 L510,320 L460,300 L445,255 Z" />
+                            <!-- Черкаська -->
+                            <path class="oblast" id="ob-cherkasy" data-name="Черкаська" d="M390,180 L460,200 L445,255 L460,300 L420,335 L370,320 L355,270 L370,215 Z" />
+                            <!-- Вінницька -->
+                            <path class="oblast" id="ob-vinnytsia" data-name="Вінницька" d="M335,165 L390,180 L370,215 L355,270 L310,280 L280,260 L295,255 L330,220 Z" />
+                <!-- Coverage Info Cards -->
+                <div class="coverage-cards" data-animate="fade-up" data-delay="200">
+                    <div class="coverage-card">
+                        <div class="card-icon">
+                            <i class="fas fa-warehouse"></i>
+                        </div>
+                        <div class="card-content">
+                            <span class="card-number">8</span>
+                            <span class="card-label">Складів та логістичних центрів</span>
+                        </div>
+                    </div>
+                    <div class="coverage-card">
+                        <div class="card-icon">
+                            <i class="fas fa-truck-fast"></i>
+                        </div>
+                        <div class="card-content">
+                            <span class="card-number">1-3</span>
+                            <span class="card-label">Дні доставки по Україні</span>
+                        </div>
+                    </div>
+                    <div class="coverage-card">
+                        <div class="card-icon">
+                            <i class="fas fa-boxes-stacked"></i>
+                        </div>
+                        <div class="card-content">
+                            <span class="card-number">50K+</span>
+                            <span class="card-label">м² складських площ</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories-section" id="categories">
+        <div class="container">
+            <div class="section-header" data-animate="fade-up">
+                <span class="section-badge">Асортимент</span>
+                <h2 class="section-title">Категорії продукції</h2>
+                <p class="section-subtitle">
+                    Широкий асортимент груп товарів
+                </p>
+            </div>
+
+            <div class="categories-compact-grid">
+                <!-- Category 1 -->
+                <a href="pages/catalog.html?cat=batteries" class="category-compact-card" data-animate="fade-up">
+                    <div class="compact-icon"><i class="fas fa-battery-full"></i></div>
+                    <span class="compact-title">Батарейки</span>
+                </a>
+
+                <!-- Category 2 -->
+                <a href="pages/catalog.html?cat=nimh" class="category-compact-card" data-animate="fade-up">
+                    <div class="compact-icon"><i class="fas fa-bolt"></i></div>
+                    <span class="compact-title">Акумулятори та ЗП NI-MH</span>
+                </a>
+
+                <!-- Category 3 -->
+                <a href="pages/catalog.html?cat=car-holders" class="category-compact-card" data-animate="fade-up">
+                    <div class="compact-icon"><i class="fas fa-mobile-screen"></i></div>
+                    <span class="compact-title">Автотримачі</span>
+                </a>
+
+                <!-- Category 4 -->
+                <a href="pages/catalog.html?cat=power-cables" class="category-compact-card" data-animate="fade-up">
+                    <div class="compact-icon"><i class="fas fa-plug"></i></div>
+                    <span class="compact-title">Блоки живлення, шнури, кабеля</span>
+                </a>
+
+                <!-- Category 5 -->
+                <a href="pages/catalog.html?cat=headphones" class="category-compact-card" data-animate="fade-up">
+                    <div class="compact-icon"><i class="fas fa-headphones"></i></div>
+                    <span class="compact-title">Навушники</span>
+                </a>
+
+                <!-- Category 6 -->
+                <a href="pages/catalog.html?cat=flash-drives" class="category-compact-card" data-animate="fade-up">
+                    <div class="compact-icon"><i class="fas fa-usb-drive"></i></div>
+                    <span class="compact-title">Флешки, карти пам'яті</span>
+                </a>
+
+                <!-- Category 7 -->
+                <a href="pages/catalog.html?cat=discs" class="category-compact-card" data-animate="fade-up">
+                    <div class="compact-icon"><i class="fas fa-compact-disc"></i></div>
+                    <span class="compact-title">Диски CD, DVD</span>
+                </a>
+
+                <!-- Category 8 -->
+                <a href="pages/catalog.html?cat=powerbanks" class="category-compact-card" data-animate="fade-up">
+                    <div class="compact-icon"><i class="fas fa-battery-half"></i></div>
+                    <span class="compact-title">ПаверБанки</span>
+                </a>
+
+                <!-- Category 9 -->
+                <a href="pages/catalog.html?cat=pc-accessories" class="category-compact-card" data-animate="fade-up">
+                    <div class="compact-icon"><i class="fas fa-computer-mouse"></i></div>
+                    <span class="compact-title">Аксесуари для ПК</span>
+                </a>
+
+                <!-- Category 10 -->
+                <a href="pages/catalog.html?cat=speakers" class="category-compact-card" data-animate="fade-up">
+                    <div class="compact-icon"><i class="fas fa-volume-high"></i></div>
+                    <span class="compact-title">Колонки</span>
+                </a>
+
+                <!-- Category 11 -->
+                <a href="pages/catalog.html?cat=radios" class="category-compact-card" data-animate="fade-up">
+                    <div class="compact-icon"><i class="fas fa-radio"></i></div>
+                    <span class="compact-title">Радіоприймачі</span>
+                </a>
+
+                <!-- Category 12 -->
+                <a href="pages/catalog.html?cat=clocks" class="category-compact-card" data-animate="fade-up">
+                    <div class="compact-icon"><i class="fas fa-clock"></i></div>
+                    <span class="compact-title">Годинники, будильники</span>
+                </a>
+
+                <!-- Category 13 -->
+                <a href="pages/catalog.html?cat=multimeters" class="category-compact-card" data-animate="fade-up">
+                    <div class="compact-icon"><i class="fas fa-gauge"></i></div>
+                    <span class="compact-title">Мультиметри</span>
+                </a>
+
+                <!-- Category 14 -->
+                <a href="pages/catalog.html?cat=li-ion" class="category-compact-card" data-animate="fade-up">
+                    <div class="compact-icon"><i class="fas fa-battery-three-quarters"></i></div>
+                    <span class="compact-title">Акумулятори та ЗП Li-ion</span>
+                </a>
+
+                <!-- Category 15 -->
+                <a href="pages/catalog.html?cat=flashlights" class="category-compact-card" data-animate="fade-up">
+                    <div class="compact-icon"><i class="fas fa-lightbulb"></i></div>
+                    <span class="compact-title">Ліхтарі, освітлення</span>
+                </a>
+
+                <!-- Category 16 -->
+                <a href="pages/catalog.html?cat=doorbells" class="category-compact-card" data-animate="fade-up">
+                    <div class="compact-icon"><i class="fas fa-bell"></i></div>
+                    <span class="compact-title">Дзвінки</span>
+                </a>
+
+                <!-- Category 17 -->
+                <a href="pages/catalog.html?cat=calculators" class="category-compact-card" data-animate="fade-up">
+                    <div class="compact-icon"><i class="fas fa-calculator"></i></div>
+                    <span class="compact-title">Калькулятори</span>
+                </a>
+
+                <!-- Category 18 -->
+                <a href="pages/catalog.html?cat=scales" class="category-compact-card" data-animate="fade-up">
+                    <div class="compact-icon"><i class="fas fa-weight-scale"></i></div>
+                    <span class="compact-title">Ваги, кантери, точні прилади</span>
+                </a>
+
+                <!-- Category 19 -->
+                <a href="pages/catalog.html?cat=lead-acid" class="category-compact-card" data-animate="fade-up">
+                    <div class="compact-icon"><i class="fas fa-car-battery"></i></div>
+                    <span class="compact-title">Свинцево-кислотні акумулятори</span>
+                </a>
+
+                <!-- Category 20 -->
+                <a href="pages/catalog.html?cat=power-strips" class="category-compact-card" data-animate="fade-up">
+                    <div class="compact-icon"><i class="fas fa-plug-circle-bolt"></i></div>
+                    <span class="compact-title">Мережеві фільтри, подовжувачі</span>
+                </a>
+
+                <!-- Category 21 -->
+                <a href="pages/catalog.html?cat=boilers" class="category-compact-card" data-animate="fade-up">
+                    <div class="compact-icon"><i class="fas fa-fire"></i></div>
+                    <span class="compact-title">Кип'ятильники</span>
+                </a>
+
+                <!-- Category 22 -->
+                <a href="pages/catalog.html?cat=soldering" class="category-compact-card" data-animate="fade-up">
+                    <div class="compact-icon"><i class="fas fa-screwdriver-wrench"></i></div>
+                    <span class="compact-title">Паяльники, витратні матеріали</span>
+                </a>
+
+                <!-- Category 23 -->
+                <a href="pages/catalog.html?cat=lighters" class="category-compact-card" data-animate="fade-up">
+                    <div class="compact-icon"><i class="fas fa-fire-flame-simple"></i></div>
+                    <span class="compact-title">Запальнички, пальники, газ</span>
+                </a>
+
+                <!-- Category 24 -->
+                <a href="pages/catalog.html?cat=paints" class="category-compact-card" data-animate="fade-up">
+                    <div class="compact-icon"><i class="fas fa-paint-roller"></i></div>
+                    <span class="compact-title">Фарби, емалі, грунт</span>
+                </a>
+
+                <!-- Category 25 -->
+                <a href="pages/catalog.html?cat=locks" class="category-compact-card" data-animate="fade-up">
+                    <div class="compact-icon"><i class="fas fa-lock"></i></div>
+                    <span class="compact-title">Замки</span>
+                </a>
+
+                <!-- Category 26 -->
+                <a href="pages/catalog.html?cat=gloves" class="category-compact-card" data-animate="fade-up">
+                    <div class="compact-icon"><i class="fas fa-hand"></i></div>
+                    <span class="compact-title">Рукавички</span>
+                </a>
+
+                <!-- Category 27 -->
+                <a href="pages/catalog.html?cat=scotch" class="category-compact-card" data-animate="fade-up">
+                    <div class="compact-icon"><i class="fas fa-tape"></i></div>
+                    <span class="compact-title">Скотч</span>
+                </a>
+
+                <!-- Category 28 -->
+                <a href="pages/catalog.html?cat=insulation-tape" class="category-compact-card" data-animate="fade-up">
+                    <div class="compact-icon"><i class="fas fa-tape"></i></div>
+                    <span class="compact-title">Ізострічка</span>
+                </a>
+
+                <!-- Category 29 -->
+                <a href="pages/catalog.html?cat=thermometers" class="category-compact-card" data-animate="fade-up">
+                    <div class="compact-icon"><i class="fas fa-temperature-half"></i></div>
+                    <span class="compact-title">Термометри</span>
+                </a>
+
+                <!-- Category 30 -->
+                <a href="pages/catalog.html?cat=household-goods" class="category-compact-card" data-animate="fade-up">
+                    <div class="compact-icon"><i class="fas fa-broom"></i></div>
+                    <span class="compact-title">Госптовари</span>
+                </a>
+
+                <!-- Category 31 -->
+                <a href="pages/catalog.html?cat=appliances" class="category-compact-card" data-animate="fade-up">
+                    <div class="compact-icon"><i class="fas fa-blender"></i></div>
+                    <span class="compact-title">Побутова техніка</span>
+                </a>
+
+                <!-- Category 32 -->
+                <a href="pages/catalog.html?cat=hygiene" class="category-compact-card" data-animate="fade-up">
+                    <div class="compact-icon"><i class="fas fa-pump-soap"></i></div>
+                    <span class="compact-title">Гігієна</span>
+                </a>
+
+                <!-- Category 33 -->
+                <a href="pages/catalog.html?cat=kitchen-home" class="category-compact-card" data-animate="fade-up">
+                    <div class="compact-icon"><i class="fas fa-utensils"></i></div>
+                    <span class="compact-title">Кухня і дім</span>
+                </a>
+
+                <!-- Category 34 -->
+                <a href="pages/catalog.html?cat=bags" class="category-compact-card" data-animate="fade-up">
+                    <div class="compact-icon"><i class="fas fa-bag-shopping"></i></div>
+                    <span class="compact-title">Пакети</span>
+                </a>
+
+                <!-- Category 35 -->
+                <a href="pages/catalog.html?cat=tools" class="category-compact-card" data-animate="fade-up">
+                    <div class="compact-icon"><i class="fas fa-hammer"></i></div>
+                    <span class="compact-title">Інструмент</span>
+                </a>
+
+                <!-- Category 36 -->
+                <a href="pages/catalog.html?cat=stationery" class="category-compact-card" data-animate="fade-up">
+                    <div class="compact-icon"><i class="fas fa-pen"></i></div>
+                    <span class="compact-title">Канцтовари</span>
+                </a>
+
+                <!-- Category 37 -->
+                <a href="pages/catalog.html?cat=sewing" class="category-compact-card" data-animate="fade-up">
+                    <div class="compact-icon"><i class="fas fa-scissors"></i></div>
+                    <span class="compact-title">Швейне приладдя</span>
+                </a>
+
+                <!-- Category 38 -->
+                <a href="pages/catalog.html?cat=insecticides" class="category-compact-card" data-animate="fade-up">
+                    <div class="compact-icon"><i class="fas fa-bug"></i></div>
+                    <span class="compact-title">Інсектициди</span>
+                </a>
+
+                <!-- Category 39 -->
+                <a href="pages/catalog.html?cat=rodenticides" class="category-compact-card" data-animate="fade-up">
+                    <div class="compact-icon"><i class="fas fa-house-chimney-crack"></i></div>
+                    <span class="compact-title">Ротентіциди (від крис, кротів)</span>
+                </a>
+
+                <!-- Category 40 -->
+                <a href="pages/catalog.html?cat=garden-chemicals" class="category-compact-card" data-animate="fade-up">
+                    <div class="compact-icon"><i class="fas fa-seedling"></i></div>
+                    <span class="compact-title">Сад-Город (Гербіциди, фунгіциди)</span>
+                </a>
+
+                <!-- Category 41 -->
+                <a href="pages/catalog.html?cat=pest-control" class="category-compact-card" data-animate="fade-up">
+                    <div class="compact-icon"><i class="fas fa-mosquito"></i></div>
+                    <span class="compact-title">Таргани, комарі та міль</span>
+                </a>
+
+                <!-- Category 42 -->
+                <a href="pages/catalog.html?cat=ropes" class="category-compact-card" data-animate="fade-up">
+                    <div class="compact-icon"><i class="fas fa-link"></i></div>
+                    <span class="compact-title">Мотузки, шнури, шпагати</span>
+                </a>
+
+                <!-- Category 43 -->
+                <a href="pages/catalog.html?cat=glue" class="category-compact-card" data-animate="fade-up">
+                    <div class="compact-icon"><i class="fas fa-droplet"></i></div>
+                    <span class="compact-title">Клей</span>
+                </a>
+
+                <!-- Category 44 -->
+                <a href="pages/catalog.html?cat=candles" class="category-compact-card" data-animate="fade-up">
+                    <div class="compact-icon"><i class="fas fa-candle-holder"></i></div>
+                    <span class="compact-title">Свічки</span>
+                </a>
+
+                <!-- Category 45 -->
+                <a href="pages/catalog.html?cat=shoe-care" class="category-compact-card" data-animate="fade-up">
+                    <div class="compact-icon"><i class="fas fa-shoe-prints"></i></div>
+                    <span class="compact-title">Засоби для взуття</span>
+                </a>
+
+                <!-- Category 46 -->
+                <a href="pages/catalog.html?cat=new-year" class="category-compact-card" data-animate="fade-up">
+                    <div class="compact-icon"><i class="fas fa-tree"></i></div>
+                    <span class="compact-title">Новий рік</span>
+                </a>
+
+                <!-- Category 47 -->
+                <a href="pages/catalog.html?cat=knives" class="category-compact-card" data-animate="fade-up">
+                    <div class="compact-icon"><i class="fas fa-knife"></i></div>
+                    <span class="compact-title">Ножі та мультітули</span>
+                </a>
+
+                <!-- Category 48 -->
+                <a href="pages/catalog.html?cat=plastic" class="category-compact-card" data-animate="fade-up">
+                    <div class="compact-icon"><i class="fas fa-recycle"></i></div>
+                    <span class="compact-title">Пластик</span>
+                </a>
+
+                <!-- Category 49 -->
+                <a href="pages/catalog.html?cat=polax" class="category-compact-card" data-animate="fade-up">
+                    <div class="compact-icon"><i class="fas fa-star"></i></div>
+                    <span class="compact-title">ТМ Polax</span>
+                </a>
+            </div>
+
+            <div class="section-cta" data-animate="fade-up">
+                <a href="pages/catalog.html" class="btn btn-outline btn-lg">
+                    <span>Повний каталог</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brands Section -->
+    <section class="brands-section" id="brands">
+        <div class="container">
+            <div class="section-header" data-animate="fade-up">
+                <span class="section-badge">Партнерство</span>
+                <h2 class="section-title">Наші бренди</h2>
+                <p class="section-subtitle">
+                    Ексклюзивна та офіційна дистрибуція провідних світових виробників
+                </p>
+            </div>
+
+            <!-- Brands Marquee -->
+            <div class="brands-marquee" data-animate="fade-up" data-delay="100">
+                <div class="marquee-track">
+                    <div class="marquee-content">
+                        <!-- Brand Items (duplicated for seamless loop) -->
+                        <div class="brand-item" data-exclusive="true">
+                            <img src="images/brands/energizer.svg" alt="Energizer" loading="lazy">
+                            <span class="exclusive-badge">Ексклюзив</span>
+                        </div>
+                        <div class="brand-item">
+                            <img src="images/brands/varta.svg" alt="VARTA" loading="lazy">
+                        </div>
+                        <div class="brand-item">
+                            <img src="images/brands/osram.svg" alt="OSRAM" loading="lazy">
+                        </div>
+                        <div class="brand-item">
+                            <img src="images/brands/philips.svg" alt="Philips" loading="lazy">
+                        </div>
+                        <div class="brand-item" data-exclusive="true">
+                            <img src="images/brands/gardena.svg" alt="Gardena" loading="lazy">
+                            <span class="exclusive-badge">Ексклюзив</span>
+                        </div>
+                        <div class="brand-item" data-exclusive="true">
+                            <img src="images/brands/tramontina.svg" alt="Tramontina" loading="lazy">
+                            <span class="exclusive-badge">Ексклюзив</span>
+                        </div>
+                        <div class="brand-item">
+                            <img src="images/brands/henkel.svg" alt="Henkel" loading="lazy">
+                        </div>
+                        <div class="brand-item">
+                            <img src="images/brands/legrand.svg" alt="Legrand" loading="lazy">
+                        </div>
+                        <!-- Duplicate for seamless loop -->
+                        <div class="brand-item" data-exclusive="true">
+                            <img src="images/brands/energizer.svg" alt="Energizer" loading="lazy">
+                            <span class="exclusive-badge">Ексклюзив</span>
+                        </div>
+                        <div class="brand-item">
+                            <img src="images/brands/varta.svg" alt="VARTA" loading="lazy">
+                        </div>
+                        <div class="brand-item">
+                            <img src="images/brands/osram.svg" alt="OSRAM" loading="lazy">
+                        </div>
+                        <div class="brand-item">
+                            <img src="images/brands/philips.svg" alt="Philips" loading="lazy">
+                        </div>
+                        <div class="brand-item" data-exclusive="true">
+                            <img src="images/brands/gardena.svg" alt="Gardena" loading="lazy">
+                            <span class="exclusive-badge">Ексклюзив</span>
+                        </div>
+                        <div class="brand-item" data-exclusive="true">
+                            <img src="images/brands/tramontina.svg" alt="Tramontina" loading="lazy">
+                            <span class="exclusive-badge">Ексклюзив</span>
+                        </div>
+                        <div class="brand-item">
+                            <img src="images/brands/henkel.svg" alt="Henkel" loading="lazy">
+                        </div>
+                        <div class="brand-item">
+                            <img src="images/brands/legrand.svg" alt="Legrand" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Brands Grid (Alternative Display) -->
+            <div class="brands-grid" data-animate="fade-up" data-delay="200">
+                <a href="pages/brands.html?brand=energizer" class="brand-card featured">
+                    <div class="brand-logo">
+                        <img src="images/brands/energizer.svg" alt="Energizer">
+                    </div>
+                    <div class="brand-info">
+                        <span class="brand-country"><img src="images/flags/us.svg" alt="USA"> США</span>
+                        <span class="brand-badge exclusive">Ексклюзив</span>
+                    </div>
+                </a>
+                <a href="pages/brands.html?brand=varta" class="brand-card">
+                    <div class="brand-logo">
+                        <img src="images/brands/varta.svg" alt="VARTA">
+                    </div>
+                    <div class="brand-info">
+                        <span class="brand-country"><img src="images/flags/de.svg" alt="Germany"> Німеччина</span>
+                    </div>
+                </a>
+                <a href="pages/brands.html?brand=osram" class="brand-card">
+                    <div class="brand-logo">
+                        <img src="images/brands/osram.svg" alt="OSRAM">
+                    </div>
+                    <div class="brand-info">
+                        <span class="brand-country"><img src="images/flags/de.svg" alt="Germany"> Німеччина</span>
+                    </div>
+                </a>
+                <a href="pages/brands.html?brand=philips" class="brand-card">
+                    <div class="brand-logo">
+                        <img src="images/brands/philips.svg" alt="Philips">
+                    </div>
+                    <div class="brand-info">
+                        <span class="brand-country"><img src="images/flags/nl.svg" alt="Netherlands"> Нідерланди</span>
+                    </div>
+                </a>
+                <a href="pages/brands.html?brand=gardena" class="brand-card featured">
+                    <div class="brand-logo">
+                        <img src="images/brands/gardena.svg" alt="Gardena">
+                    </div>
+                    <div class="brand-info">
+                        <span class="brand-country"><img src="images/flags/de.svg" alt="Germany"> Німеччина</span>
+                        <span class="brand-badge exclusive">Ексклюзив</span>
+                    </div>
+                </a>
+                <a href="pages/brands.html?brand=tramontina" class="brand-card featured">
+                    <div class="brand-logo">
+                        <img src="images/brands/tramontina.svg" alt="Tramontina">
+                    </div>
+                    <div class="brand-info">
+                        <span class="brand-country"><img src="images/flags/br.svg" alt="Brazil"> Бразилія</span>
+                        <span class="brand-badge exclusive">Ексклюзив</span>
+                    </div>
+                </a>
+                <a href="pages/brands.html?brand=henkel" class="brand-card">
+                    <div class="brand-logo">
+                        <img src="images/brands/henkel.svg" alt="Henkel">
+                    </div>
+                    <div class="brand-info">
+                        <span class="brand-country"><img src="images/flags/de.svg" alt="Germany"> Німеччина</span>
+                    </div>
+                </a>
+                <a href="pages/brands.html?brand=legrand" class="brand-card">
+                    <div class="brand-logo">
+                        <img src="images/brands/legrand.svg" alt="Legrand">
+                    </div>
+                    <div class="brand-info">
+                        <span class="brand-country"><img src="images/flags/fr.svg" alt="France"> Франція</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="section-cta" data-animate="fade-up">
+                <a href="pages/brands.html" class="btn btn-outline btn-lg">
+                    <span>Всі бренди</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section" id="benefits">
+        <div class="container">
+            <div class="section-header" data-animate="fade-up">
+                <span class="section-badge">Переваги</span>
+                <h2 class="section-title">Чому обирають нас?</h2>
+                <p class="section-subtitle">
+                    Надійний FMCG-дистриб'ютор з сильною логістикою, широким асортиментом і фокусом на розвиток партнерів
+                </p>
+            </div>
+
+            <div class="benefits-grid">
+                <!-- Benefit 1 -->
+                <div class="benefit-card" data-animate="fade-up" data-delay="0">
+                    <div class="benefit-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3 class="benefit-title">Прямі контракти з провідними виробниками</h3>
+                    <p class="benefit-description">
+                        Офіційне співробітництво з виробниками забезпечує найкращі ціни та якість продукції
+                    </p>
+                </div>
+
+                <!-- Benefit 2 -->
+                <div class="benefit-card" data-animate="fade-up" data-delay="50">
+                    <div class="benefit-icon">
+                        <i class="fas fa-boxes-stacked"></i>
+                    </div>
+                    <h3 class="benefit-title">Широкий асортимент товарів FMCG в наявності</h3>
+                    <p class="benefit-description">
+                        Повний спектр товарів швидкого обігу завжди доступний на наших складах
+                    </p>
+                </div>
+
+                <!-- Benefit 3 -->
+                <div class="benefit-card" data-animate="fade-up" data-delay="100">
+                    <div class="benefit-icon">
+                        <i class="fas fa-truck-fast"></i>
+                    </div>
+                    <h3 class="benefit-title">Швидка доставка та стабільна логістика</h3>
+                    <p class="benefit-description">
+                        Власна логістична мережа забезпечує швидку та надійну доставку в будь-який куточок України
+                    </p>
+                </div>
+
+                <!-- Benefit 4 -->
+                <div class="benefit-card" data-animate="fade-up" data-delay="150">
+                    <div class="benefit-icon">
+                        <i class="fas fa-percent"></i>
+                    </div>
+                    <h3 class="benefit-title">Гнучкі умови співпраці та система знижок</h3>
+                    <p class="benefit-description">
+                        Індивідуальний підхід до кожного партнера з вигідними умовами та бонусними програмами
+                    </p>
+                </div>
+
+                <!-- Benefit 5 -->
+                <div class="benefit-card" data-animate="fade-up" data-delay="200">
+                    <div class="benefit-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3 class="benefit-title">Персональний менеджер і підтримка клієнтів</h3>
+                    <p class="benefit-description">
+                        Кожен клієнт має власного менеджера для оперативного вирішення будь-яких питань
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-bg">
+            <div class="cta-gradient"></div>
+            <div class="cta-pattern"></div>
+        </div>
+        <div class="container">
+            <div class="cta-content" data-animate="fade-up">
+                <h2 class="cta-title">Готові до співпраці?</h2>
+                <p class="cta-description">
+                    Заповніть коротку анкету і наш менеджер зв'яжеться з вами протягом 24 годин 
+                    для обговорення умов партнерства
+                </p>
+                <div class="cta-actions">
+                    <a href="pages/partners.html" class="btn btn-primary btn-lg">
+                        <span>Стати партнером</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="pages/contacts.html" class="btn btn-ghost btn-lg">
+                        <i class="fas fa-phone"></i>
+                        <span>Зв'язатися з нами</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section class="news-section" id="news">
+        <div class="container">
+            <div class="section-header" data-animate="fade-up">
+                <span class="section-badge">Актуальне</span>
+                <h2 class="section-title">Новини та огляди</h2>
+                <p class="section-subtitle">
+                    Дізнавайтесь першими про новинки, акції та події компанії
+                </p>
+            </div>
+
+            <div class="news-grid">
+                <!-- News Card 1 -->
+                <article class="news-card featured" data-animate="fade-up" data-delay="0">
+                    <a href="pages/news/energizer-2026.html" class="news-image">
+                        <img src="images/news/energizer-2026.jpg" alt="Нова лінійка Energizer 2026" loading="lazy">
+                        <span class="news-badge">Новинка</span>
+                    </a>
+                    <div class="news-content">
+                        <div class="news-meta">
+                            <span class="news-date"><i class="far fa-calendar"></i> 10 квітня 2026</span>
+                            <span class="news-category">Огляд продукції</span>
+                        </div>
+                        <h3 class="news-title">
+                            <a href="pages/news/energizer-2026.html">Нова лінійка Energizer 2026</a>
+                        </h3>
+                        <p class="news-excerpt">
+                            Представляємо оновлену серію батарейок з підвищеною ємністю та екологічним пакуванням.
+                        </p>
+                        <a href="pages/news/energizer-2026.html" class="news-link">
+                            Читати далі <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- News Card 2 -->
+                <article class="news-card" data-animate="fade-up" data-delay="100">
+                    <a href="pages/news/spring-promo.html" class="news-image">
+                        <img src="images/news/spring-promo.jpg" alt="Весняна акція для партнерів" loading="lazy">
+                        <span class="news-badge promo">Акція</span>
+                    </a>
+                    <div class="news-content">
+                        <div class="news-meta">
+                            <span class="news-date"><i class="far fa-calendar"></i> 5 квітня 2026</span>
+                            <span class="news-category">Акції</span>
+                        </div>
+                        <h3 class="news-title">
+                            <a href="pages/news/spring-promo.html">Весняна акція для партнерів</a>
+                        </h3>
+                        <p class="news-excerpt">
+                            Спеціальні умови на садовий інструмент GARDENA до кінця квітня.
+                        </p>
+                        <a href="pages/news/spring-promo.html" class="news-link">
+                            Читати далі <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- News Card 3 -->
+                <article class="news-card" data-animate="fade-up" data-delay="200">
+                    <a href="pages/news/exhibition-2026.html" class="news-image">
+                        <img src="images/news/exhibition.jpg" alt="NRG-UA на виставці InterBuild 2026" loading="lazy">
+                    </a>
+                    <div class="news-content">
+                        <div class="news-meta">
+                            <span class="news-date"><i class="far fa-calendar"></i> 28 березня 2026</span>
+                            <span class="news-category">Компанія</span>
+                        </div>
+                        <h3 class="news-title">
+                            <a href="pages/news/exhibition-2026.html">NRG-UA на виставці InterBuild 2026</a>
+                        </h3>
+                        <p class="news-excerpt">
+                            Запрошуємо відвідати наш стенд на найбільшій будівельній виставці України.
+                        </p>
+                        <a href="pages/news/exhibition-2026.html" class="news-link">
+                            Читати далі <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+            </div>
+
+            <div class="section-cta" data-animate="fade-up">
+                <a href="pages/news.html" class="btn btn-outline btn-lg">
+                    <span>Всі новини</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="footer-grid">
+                    <!-- Company Info -->
+                    <div class="footer-col footer-about">
+                        <a href="/" class="footer-logo">
+                            <img src="images/nrg-logo.svg" alt="NRG-UA Supply Partner" height="40">
+                        </a>
+                        <p class="footer-description">
+                            Національний B2B-дистриб'ютор товарів для дому та бізнесу. 
+                            Ексклюзивні бренди та швидка логістика по всій Україні.
+                        </p>
+                        <div class="footer-social">
+                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                            <a href="#" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Quick Links -->
+                    <div class="footer-col">
+                        <h4 class="footer-title">Компанія</h4>
+                        <ul class="footer-links">
+                            <li><a href="pages/about.html">Про нас</a></li>
+                            <li><a href="pages/about.html#team">Команда</a></li>
+                            <li><a href="pages/about.html#career">Кар'єра</a></li>
+                            <li><a href="pages/news.html">Новини</a></li>
+                            <li><a href="pages/contacts.html">Контакти</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Catalog Links -->
+                    <div class="footer-col">
+                        <h4 class="footer-title">Каталог</h4>
+                        <ul class="footer-links">
+                            <li><a href="pages/catalog.html?cat=lighting">Світлотехніка</a></li>
+                            <li><a href="pages/catalog.html?cat=batteries">Елементи живлення</a></li>
+                            <li><a href="pages/catalog.html?cat=garden">Сад і город</a></li>
+                            <li><a href="pages/catalog.html?cat=household">Господарські товари</a></li>
+                            <li><a href="pages/brands.html">Всі бренди</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Partners Links -->
+                    <div class="footer-col">
+                        <h4 class="footer-title">Партнерам</h4>
+                        <ul class="footer-links">
+                            <li><a href="pages/partners.html">Умови співпраці</a></li>
+                            <li><a href="pages/partners.html#apply">Стати партнером</a></li>
+                            <li><a href="pages/nrg-cabinet.html">Особистий кабінет</a></li>
+                            <li><a href="pages/partners.html#faq">Часті питання</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Contacts -->
+                    <div class="footer-col footer-contacts">
+                        <h4 class="footer-title">Контакти</h4>
+                        <ul class="contact-list">
+                            <li>
+                                <i class="fas fa-phone"></i>
+                                <a href="tel:+380441234567">+38 (044) 123-45-67</a>
+                            </li>
+                            <li>
+                                <i class="fas fa-envelope"></i>
+                                <a href="mailto:info@nrg-ua.com">info@nrg-ua.com</a>
+                            </li>
+                            <li>
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>м. Київ, вул. Хрещатик, 1</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-clock"></i>
+                                <span>Пн-Пт: 9:00-18:00</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="footer-bottom-content">
+                    <p class="copyright">© 2026 NRG-UA. Всі права захищені.</p>
+                    <div class="footer-bottom-links">
+                        <a href="pages/privacy.html">Політика конфіденційності</a>
+                        <a href="pages/terms.html">Умови використання</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Нагору">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="js/i18n.js"></script>
+    <script src="js/nrg-main.js"></script>
+</body>
+</html>

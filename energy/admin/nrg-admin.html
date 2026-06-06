@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NRG-UA | Адмін-панель</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --dark: #0f172a;
+            --dark-light: #1e293b;
+            --gray: #64748b;
+            --gray-light: #94a3b8;
+            --border: #334155;
+            --bg: #0f172a;
+            --bg-card: #1e293b;
+            --text: #f1f5f9;
+            --text-muted: #94a3b8;
+            --radius: 12px;
+            --shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+        }
+        
+        /* Login Screen */
+        .login-screen {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--dark) 0%, #1a1a2e 100%);
+        }
+        
+        .login-card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 3rem;
+            width: 100%;
+            max-width: 420px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+        
+        .login-logo {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .login-logo span {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 64px;
+            height: 64px;
+            background: var(--primary);
+            border-radius: 16px;
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+        
+        .login-logo h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .login-logo p {
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-muted);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            background: var(--dark);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            font-size: 1rem;
+            transition: all 0.2s;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.875rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+            font-size: 1rem;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            width: 100%;
+        }
+        
+        .btn-primary:hover {
+            background: var(--primary-dark);
+        }
+        
+        .btn-secondary {
+            background: var(--dark-light);
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+        
+        .btn-success {
+            background: var(--secondary);
+            color: white;
+        }
+        
+        .btn-danger {
+            background: var(--danger);
+            color: white;
+        }
+        
+        .btn-sm {
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+        }
+        
+        /* App Layout */
+        .app-container {
+            display: none;
+        }
+        
+        .app-container.active {
+            display: flex;
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            width: 280px;
+            background: var(--dark-light);
+            min-height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+            border-right: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .sidebar-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .sidebar-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--text);
+        }
+        
+        .sidebar-logo span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            border-radius: 10px;
+            font-weight: 800;
+            font-size: 0.875rem;
+        }
+        
+        .sidebar-logo strong {
+            font-size: 1.25rem;
+        }
+        
+        .sidebar-nav {
+            flex: 1;
+            padding: 1rem 0;
+            overflow-y: auto;
+        }
+        
+        .nav-section {
+            padding: 0 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .nav-section-title {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: var(--gray);
+            padding: 0.5rem 1rem;
+            letter-spacing: 0.05em;
+        }
+        
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-bottom: 0.25rem;
+        }
+        
+        .nav-item:hover {
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--text);
+        }
+        
+        .nav-item.active {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .nav-item i {
+            width: 20px;
+            text-align: center;
+        }
+        
+        .nav-item .badge {
+            margin-left: auto;
+            background: var(--danger);
+            color: white;
+            padding: 0.125rem 0.5rem;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .sidebar-footer {
+            padding: 1rem 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+        
+        .user-details {
+            flex: 1;
+        }
+        
+        .user-name {
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+        
+        .user-role {
+            color: var(--text-muted);
+            font-size: 0.75rem;
+        }
+        
+        /* Main Content */
+        .main-content {
+            margin-left: 280px;
+            flex: 1;
+            min-height: 100vh;
+        }
+        
+        /* Header */
+        .header {
+            background: var(--bg-card);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-title h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .header-title p {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+        
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        /* Page Content */
+        .page-content {
+            padding: 2rem;
+        }
+        
+        .page-section {
+            display: none;
+        }
+        
+        .page-section.active {
+            display: block;
+        }
+        
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+        }
+        
+        .stat-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+        
+        .stat-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+        
+        .stat-icon.primary { background: rgba(99, 102, 241, 0.15); color: var(--primary); }
+        .stat-icon.success { background: rgba(16, 185, 129, 0.15); color: var(--secondary); }
+        .stat-icon.warning { background: rgba(245, 158, 11, 0.15); color: var(--warning); }
+        .stat-icon.danger { background: rgba(239, 68, 68, 0.15); color: var(--danger); }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+        
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+        
+        .stat-change {
+            font-size: 0.75rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 6px;
+        }
+        
+        .stat-change.positive {
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--secondary);
+        }
+        
+        .stat-change.negative {
+            background: rgba(239, 68, 68, 0.15);
+            color: var(--danger);
+        }
+        
+        /* Cards */
+        .card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            margin-bottom: 1.5rem;
+        }
+        
+        .card-header {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .card-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+        }
+        
+        .card-body {
+            padding: 1.5rem;
+        }
+        
+        /* Tables */
+        .table-responsive {
+            overflow-x: auto;
+        }
+        
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .table th,
+        .table td {
+            padding: 1rem 1.5rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .table th {
+            background: var(--dark);
+            font-weight: 600;
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .table tbody tr:hover {
+            background: rgba(99, 102, 241, 0.05);
+        }
+        
+        /* Badges */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.25rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .badge-success { background: rgba(16, 185, 129, 0.15); color: var(--secondary); }
+        .badge-warning { background: rgba(245, 158, 11, 0.15); color: var(--warning); }
+        .badge-danger { background: rgba(239, 68, 68, 0.15); color: var(--danger); }
+        .badge-primary { background: rgba(99, 102, 241, 0.15); color: var(--primary); }
+        .badge-gray { background: rgba(100, 116, 139, 0.15); color: var(--gray); }
+        
+        /* Search & Filters */
+        .toolbar {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .search-box {
+            position: relative;
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 0.75rem 1rem 0.75rem 2.75rem;
+            background: var(--dark);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            font-size: 0.875rem;
+        }
+        
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        .search-box i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray);
+        }
+        
+        .filter-select {
+            padding: 0.75rem 1rem;
+            background: var(--dark);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            font-size: 0.875rem;
+            min-width: 150px;
+        }
+        
+        /* Modal */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-overlay.active {
+            display: flex;
+        }
+        
+        .modal {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            width: 100%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+            border: 1px solid var(--border);
+        }
+        
+        .modal-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .modal-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+        
+        .modal-close {
+            background: none;
+            border: none;
+            color: var(--gray);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .modal-body {
+            padding: 1.5rem;
+        }
+        
+        .modal-footer {
+            padding: 1.5rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+        }
+        
+        /* Toast */
+        .toast-container {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            z-index: 2000;
+        }
+        
+        .toast {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1rem 1.5rem;
+            margin-bottom: 0.5rem;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            animation: slideIn 0.3s ease;
+        }
+        
+        .toast.success { border-left: 4px solid var(--secondary); }
+        .toast.error { border-left: 4px solid var(--danger); }
+        .toast.warning { border-left: 4px solid var(--warning); }
+        
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        /* Tabs */
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 1.5rem;
+        }
+        
+        .tab {
+            padding: 1rem 1.5rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s;
+        }
+        
+        .tab:hover {
+            color: var(--text);
+        }
+        
+        .tab.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+        
+        /* Grid */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .grid-2 { grid-template-columns: 1fr; }
+        }
+        
+        /* Actions */
+        .actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .action-btn {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--dark);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .action-btn:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        .action-btn.danger:hover {
+            background: var(--danger);
+            border-color: var(--danger);
+        }
+        
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-muted);
+        }
+        
+        .empty-state i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+        
+        /* Hidden */
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Screen -->
+    <div class="login-screen" id="loginScreen">
+        <div class="login-card">
+            <div class="login-logo">
+                <span>NRG</span>
+                <h1>Адмін-панель</h1>
+                <p>Увійдіть до системи управління</p>
+            </div>
+            
+            <form id="loginForm">
+                <div class="form-group">
+                    <label>Логін</label>
+                    <input type="text" class="form-control" id="loginUsername" value="admin" placeholder="Введіть логін">
+                </div>
+                
+                <div class="form-group">
+                    <label>Пароль</label>
+                    <input type="password" class="form-control" id="loginPassword" value="admin123" placeholder="Введіть пароль">
+                </div>
+                
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Увійти
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- App Container -->
+    <div class="app-container" id="appContainer">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <a href="#" class="sidebar-logo">
+                    <span>NRG</span>
+                    <strong>Admin</strong>
+                </a>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <div class="nav-section-title">Головне</div>
+                    <a class="nav-item active" data-page="dashboard">
+                        <i class="fas fa-chart-pie"></i>
+                        <span>Дашборд</span>
+                    </a>
+                </div>
+                
+                <div class="nav-section">
+                    <div class="nav-section-title">Партнери</div>
+                    <a class="nav-item" data-page="partners">
+                        <i class="fas fa-handshake"></i>
+                        <span>Партнери</span>
+                        <span class="badge" id="pendingPartnersBadge">3</span>
+                    </a>
+                    <a class="nav-item" data-page="managers">
+                        <i class="fas fa-user-tie"></i>
+                        <span>Менеджери</span>
+                    </a>
+                    <a class="nav-item" data-page="orders">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span>Замовлення</span>
+                        <span class="badge" id="pendingOrdersBadge">12</span>
+                    </a>
+                </div>
+                
+                <div class="nav-section">
+                    <div class="nav-section-title">Каталог</div>
+                    <a class="nav-item" data-page="products">
+                        <i class="fas fa-boxes"></i>
+                        <span>Товари</span>
+                    </a>
+                    <a class="nav-item" data-page="categories">
+                        <i class="fas fa-folder-tree"></i>
+                        <span>Категорії</span>
+                    </a>
+                    <a class="nav-item" data-page="brands">
+                        <i class="fas fa-tags"></i>
+                        <span>Бренди</span>
+                    </a>
+                    <a class="nav-item" data-page="tags">
+                        <i class="fas fa-hashtag"></i>
+                        <span>Теги</span>
+                    </a>
+                </div>
+                
+                <div class="nav-section">
+                    <div class="nav-section-title">Контент</div>
+                    <a class="nav-item" data-page="content">
+                        <i class="fas fa-newspaper"></i>
+                        <span>Новини та банери</span>
+                    </a>
+                    <a class="nav-item" data-page="translations">
+                        <i class="fas fa-language"></i>
+                        <span>Переклади</span>
+                    </a>
+                </div>
+                
+                <div class="nav-section">
+                    <div class="nav-section-title">Система</div>
+                    <a class="nav-item" data-page="settings">
+                        <i class="fas fa-cog"></i>
+                        <span>Налаштування</span>
+                    </a>
+                </div>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <div class="user-info">
+                    <div class="user-avatar" id="userAvatar">A</div>
+                    <div class="user-details">
+                        <div class="user-name" id="userName">Адміністратор</div>
+                        <div class="user-role" id="userRole">Admin</div>
+                    </div>
+                    <button class="action-btn" onclick="logout()" title="Вийти">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-title">
+                    <h1 id="pageTitle">Дашборд</h1>
+                    <p id="pageSubtitle">Огляд показників системи</p>
+                </div>
+                <div class="header-actions">
+                    <a href="../nrg-index.html" target="_blank" class="btn btn-secondary btn-sm">
+                        <i class="fas fa-external-link-alt"></i>
+                        Перейти на сайт
+                    </a>
+                </div>
+            </header>
+            
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Dashboard Page -->
+                <section class="page-section active" id="page-dashboard">
+                    <div class="stats-grid" id="statsGrid">
+                        <!-- Stats will be loaded here -->
+                    </div>
+                    
+                    <div class="grid-2">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Останні замовлення</h3>
+                                <a href="#" class="btn btn-sm btn-secondary" onclick="navigateTo('orders')">Всі замовлення</a>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>№ Замовлення</th>
+                                            <th>Партнер</th>
+                                            <th>Сума</th>
+                                            <th>Статус</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="recentOrdersTable">
+                                        <!-- Data loaded via JS -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Нові партнери</h3>
+                                <a href="#" class="btn btn-sm btn-secondary" onclick="navigateTo('partners')">Всі партнери</a>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Компанія</th>
+                                            <th>Місто</th>
+                                            <th>Статус</th>
+                                            <th>Дії</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="recentPartnersTable">
+                                        <!-- Data loaded via JS -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Partners Page -->
+                <section class="page-section" id="page-partners">
+                    <div class="toolbar">
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" placeholder="Пошук партнерів..." id="partnersSearch">
+                        </div>
+                        <select class="filter-select" id="partnersStatusFilter">
+                            <option value="">Всі статуси</option>
+                            <option value="pending">Очікують</option>
+                            <option value="active">Активні</option>
+                            <option value="suspended">Призупинені</option>
+                        </select>
+                        <button class="btn btn-primary btn-sm" onclick="openPartnerModal()">
+                            <i class="fas fa-plus"></i>
+                            Додати партнера
+                        </button>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Компанія</th>
+                                        <th>Контакт</th>
+                                        <th>Тип</th>
+                                        <th>Баланс</th>
+                                        <th>Статус</th>
+                                        <th>Дії</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="partnersTable">
+                                    <!-- Data loaded via JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Orders Page -->
+                <section class="page-section" id="page-orders">
+                    <div class="toolbar">
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" placeholder="Пошук замовлень..." id="ordersSearch">
+                        </div>
+                        <select class="filter-select" id="ordersStatusFilter">
+                            <option value="">Всі статуси</option>
+                            <option value="pending">Нові</option>
+                            <option value="processing">В обробці</option>
+                            <option value="shipped">Відправлені</option>
+                            <option value="delivered">Доставлені</option>
+                        </select>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>№ Замовлення</th>
+                                        <th>Партнер</th>
+                                        <th>Позицій</th>
+                                        <th>Сума</th>
+                                        <th>Дата</th>
+                                        <th>Статус</th>
+                                        <th>Дії</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="ordersTable">
+                                    <!-- Data loaded via JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Products Page -->
+                <section class="page-section" id="page-products">
+                    <div class="toolbar">
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" placeholder="Пошук товарів..." id="productsSearch">
+                        </div>
+                        <select class="filter-select" id="productsCategoryFilter">
+                            <option value="">Всі категорії</option>
+                        </select>
+                        <button class="btn btn-primary btn-sm" onclick="openProductModal()">
+                            <i class="fas fa-plus"></i>
+                            Додати товар
+                        </button>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>SKU</th>
+                                        <th>Назва</th>
+                                        <th>Категорія</th>
+                                        <th>Ціна (РРЦ)</th>
+                                        <th>Ціна (Опт)</th>
+                                        <th>Залишок</th>
+                                        <th>Статус</th>
+                                        <th>Дії</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="productsTable">
+                                    <!-- Data loaded via JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Categories Page -->
+                <section class="page-section" id="page-categories">
+                    <div class="toolbar">
+                        <button class="btn btn-primary btn-sm" onclick="openCategoryModal()">
+                            <i class="fas fa-plus"></i>
+                            Додати категорію
+                        </button>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Назва</th>
+                                        <th>Slug</th>
+                                        <th>Товарів</th>
+                                        <th>Статус</th>
+                                        <th>Дії</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="categoriesTable">
+                                    <!-- Data loaded via JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Brands Page -->
+                <section class="page-section" id="page-brands">
+                    <div class="toolbar">
+                        <button class="btn btn-primary btn-sm" onclick="openBrandModal()">
+                            <i class="fas fa-plus"></i>
+                            Додати бренд
+                        </button>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Назва</th>
+                                        <th>Країна</th>
+                                        <th>Ексклюзив</th>
+                                        <th>Товарів</th>
+                                        <th>Дії</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="brandsTable">
+                                    <!-- Data loaded via JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Managers Page -->
+                <section class="page-section" id="page-managers">
+                    <div class="toolbar">
+                        <button class="btn btn-primary btn-sm" onclick="openManagerModal()">
+                            <i class="fas fa-plus"></i>
+                            Додати менеджера
+                        </button>
+                        <select class="filter-select" id="managersRegionFilter">
+                            <option value="">Всі регіони</option>
+                        </select>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Менеджер</th>
+                                        <th>Телефон</th>
+                                        <th>Email</th>
+                                        <th>Telegram</th>
+                                        <th>Регіон</th>
+                                        <th>Статус</th>
+                                        <th>Дії</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="managersTable">
+                                    <!-- Data loaded via JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Tags Page -->
+                <section class="page-section" id="page-tags">
+                    <div class="toolbar">
+                        <button class="btn btn-primary btn-sm" onclick="openTagModal()">
+                            <i class="fas fa-plus"></i>
+                            Додати тег
+                        </button>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Тег</th>
+                                        <th>Slug</th>
+                                        <th>Колір</th>
+                                        <th>Товарів</th>
+                                        <th>Статей</th>
+                                        <th>Дії</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tagsTable">
+                                    <!-- Data loaded via JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Content Page -->
+                <section class="page-section" id="page-content">
+                    <div class="tabs">
+                        <div class="tab active" data-content-type="news">Новини</div>
+                        <div class="tab" data-content-type="banner">Банери</div>
+                        <div class="tab" data-content-type="promo">Акції</div>
+                    </div>
+                    
+                    <div class="toolbar">
+                        <button class="btn btn-primary btn-sm" onclick="openContentModal()">
+                            <i class="fas fa-plus"></i>
+                            Додати
+                        </button>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Заголовок (UK)</th>
+                                        <th>Заголовок (EN)</th>
+                                        <th>Тип</th>
+                                        <th>Статус</th>
+                                        <th>Дата</th>
+                                        <th>Дії</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="contentTable">
+                                    <!-- Data loaded via JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Translations Page -->
+                <section class="page-section" id="page-translations">
+                    <div class="toolbar">
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" placeholder="Пошук по ключу..." id="translationsSearch">
+                        </div>
+                        <button class="btn btn-primary btn-sm" onclick="openTranslationModal()">
+                            <i class="fas fa-plus"></i>
+                            Додати переклад
+                        </button>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Ключ</th>
+                                        <th>Українська</th>
+                                        <th>English</th>
+                                        <th>Дії</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="translationsTable">
+                                    <!-- Data loaded via JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Settings Page -->
+                <section class="page-section" id="page-settings">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Налаштування сайту</h3>
+                        </div>
+                        <div class="card-body">
+                            <form id="settingsForm">
+                                <div class="grid-2">
+                                    <div class="form-group">
+                                        <label>Назва сайту</label>
+                                        <input type="text" class="form-control" value="NRG-UA">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Email для зв'язку</label>
+                                        <input type="email" class="form-control" value="info@nrg-ua.com">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Телефон</label>
+                                        <input type="text" class="form-control" value="+38 (044) 123-45-67">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Адреса</label>
+                                        <input type="text" class="form-control" value="м. Київ, вул. Хрещатик, 1">
+                                    </div>
+                                </div>
+                                <button type="button" class="btn btn-primary" onclick="saveSettings()">
+                                    <i class="fas fa-save"></i>
+                                    Зберегти
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+    
+    <!-- Modal Template -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalTitle">Модальне вікно</h3>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Modal content loaded dynamically -->
+            </div>
+            <div class="modal-footer" id="modalFooter">
+                <button class="btn btn-secondary" onclick="closeModal()">Скасувати</button>
+                <button class="btn btn-primary" id="modalSaveBtn">Зберегти</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="nrg-admin.js"></script>
+</body>
+</html>

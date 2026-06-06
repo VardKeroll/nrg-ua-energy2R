@@ -1,0 +1,1528 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Енергія - Адмін панель</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #3b82f6;
+            --primary-dark: #2563eb;
+            --secondary: #1e293b;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --info: #06b6d4;
+            --bg-main: #f1f5f9;
+            --bg-white: #ffffff;
+            --text-dark: #0f172a;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --sidebar-width: 260px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-main);
+            color: var(--text-dark);
+            min-height: 100vh;
+        }
+        
+        /* Login Screen */
+        .login-screen {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--secondary) 0%, #334155 100%);
+        }
+        
+        .login-box {
+            background: var(--bg-white);
+            padding: 40px;
+            border-radius: 16px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        
+        .login-logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .login-logo i {
+            font-size: 48px;
+            color: var(--primary);
+        }
+        
+        .login-logo h1 {
+            font-size: 24px;
+            margin-top: 10px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-size: 15px;
+            transition: all 0.2s;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: var(--primary-dark);
+        }
+        
+        .btn-block {
+            width: 100%;
+        }
+        
+        .btn-success { background: var(--success); color: white; }
+        .btn-warning { background: var(--warning); color: white; }
+        .btn-danger { background: var(--danger); color: white; }
+        .btn-secondary { background: var(--secondary); color: white; }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--border);
+            color: var(--text-dark);
+        }
+        .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+        .btn-sm {
+            padding: 8px 16px;
+            font-size: 13px;
+        }
+        
+        /* Main Layout */
+        .app-container {
+            display: none;
+        }
+        
+        .app-container.active {
+            display: flex;
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            width: var(--sidebar-width);
+            background: var(--secondary);
+            min-height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+            z-index: 100;
+            transition: all 0.3s;
+        }
+        
+        .sidebar-header {
+            padding: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .sidebar-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: white;
+        }
+        
+        .sidebar-logo i {
+            font-size: 28px;
+            color: var(--primary);
+        }
+        
+        .sidebar-logo span {
+            font-size: 20px;
+            font-weight: 700;
+        }
+        
+        .sidebar-nav {
+            padding: 15px 0;
+        }
+        
+        .nav-section {
+            padding: 10px 20px 5px;
+            color: rgba(255,255,255,0.4);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 20px;
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        
+        .nav-item:hover, .nav-item.active {
+            background: rgba(255,255,255,0.1);
+            color: white;
+        }
+        
+        .nav-item.active {
+            border-left: 3px solid var(--primary);
+        }
+        
+        .nav-item i {
+            width: 20px;
+            text-align: center;
+        }
+        
+        .nav-badge {
+            margin-left: auto;
+            background: var(--danger);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+        
+        /* Main Content */
+        .main-content {
+            margin-left: var(--sidebar-width);
+            flex: 1;
+            min-height: 100vh;
+        }
+        
+        /* Header */
+        .header {
+            background: var(--bg-white);
+            padding: 15px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+        
+        .header-title h1 {
+            font-size: 20px;
+            font-weight: 600;
+        }
+        
+        .header-title p {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+        
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .header-search {
+            display: flex;
+            align-items: center;
+            background: var(--bg-main);
+            border-radius: 8px;
+            padding: 8px 15px;
+        }
+        
+        .header-search input {
+            border: none;
+            background: none;
+            outline: none;
+            padding: 5px;
+            width: 200px;
+        }
+        
+        .header-search i {
+            color: var(--text-muted);
+        }
+        
+        .user-menu {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+        
+        .user-menu:hover {
+            background: var(--bg-main);
+        }
+        
+        .user-avatar {
+            width: 36px;
+            height: 36px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .user-info {
+            line-height: 1.3;
+        }
+        
+        .user-info strong {
+            font-size: 14px;
+        }
+        
+        .user-info small {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+        
+        /* Content Area */
+        .content {
+            padding: 30px;
+        }
+        
+        .page-section {
+            display: none;
+        }
+        
+        .page-section.active {
+            display: block;
+        }
+        
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            background: var(--bg-white);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        
+        .stat-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        
+        .stat-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        
+        .stat-icon.blue { background: rgba(59,130,246,0.1); color: var(--primary); }
+        .stat-icon.green { background: rgba(16,185,129,0.1); color: var(--success); }
+        .stat-icon.orange { background: rgba(245,158,11,0.1); color: var(--warning); }
+        .stat-icon.red { background: rgba(239,68,68,0.1); color: var(--danger); }
+        
+        .stat-value {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+        
+        .stat-change {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+        
+        .stat-change.positive { color: var(--success); }
+        .stat-change.negative { color: var(--danger); }
+        
+        /* Tables */
+        .card {
+            background: var(--bg-white);
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            margin-bottom: 20px;
+        }
+        
+        .card-header {
+            padding: 20px 25px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .card-header h3 {
+            font-size: 16px;
+            font-weight: 600;
+        }
+        
+        .card-body {
+            padding: 0;
+        }
+        
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .table th, .table td {
+            padding: 15px 20px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .table th {
+            font-weight: 600;
+            font-size: 12px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            background: var(--bg-main);
+        }
+        
+        .table tr:hover {
+            background: var(--bg-main);
+        }
+        
+        .table-actions {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .table-actions button {
+            width: 32px;
+            height: 32px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+        
+        .table-actions .edit-btn {
+            background: rgba(59,130,246,0.1);
+            color: var(--primary);
+        }
+        
+        .table-actions .delete-btn {
+            background: rgba(239,68,68,0.1);
+            color: var(--danger);
+        }
+        
+        .table-actions button:hover {
+            transform: scale(1.1);
+        }
+        
+        /* Badge */
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .badge-success { background: rgba(16,185,129,0.1); color: var(--success); }
+        .badge-warning { background: rgba(245,158,11,0.1); color: var(--warning); }
+        .badge-danger { background: rgba(239,68,68,0.1); color: var(--danger); }
+        .badge-info { background: rgba(6,182,212,0.1); color: var(--info); }
+        .badge-primary { background: rgba(59,130,246,0.1); color: var(--primary); }
+        
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        
+        .modal-overlay.active {
+            display: flex;
+        }
+        
+        .modal {
+            background: var(--bg-white);
+            border-radius: 16px;
+            width: 100%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        .modal-header {
+            padding: 20px 25px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .modal-header h3 {
+            font-size: 18px;
+        }
+        
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            color: var(--text-muted);
+        }
+        
+        .modal-body {
+            padding: 25px;
+        }
+        
+        .modal-footer {
+            padding: 20px 25px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+        
+        /* Form Grid */
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+        
+        /* CRM Funnel */
+        .funnel-board {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 15px;
+            min-height: 500px;
+        }
+        
+        .funnel-column {
+            background: var(--bg-main);
+            border-radius: 12px;
+            padding: 15px;
+        }
+        
+        .funnel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border);
+        }
+        
+        .funnel-header h4 {
+            font-size: 13px;
+            font-weight: 600;
+        }
+        
+        .funnel-count {
+            background: var(--bg-white);
+            padding: 3px 10px;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .lead-card {
+            background: var(--bg-white);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: all 0.2s;
+        }
+        
+        .lead-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .lead-card h5 {
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        
+        .lead-card p {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 5px;
+        }
+        
+        .lead-value {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--success);
+        }
+        
+        /* AI Chat */
+        .chat-container {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 20px;
+        }
+        
+        .chat-box {
+            background: var(--bg-white);
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            height: 600px;
+        }
+        
+        .chat-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        
+        .chat-message {
+            margin-bottom: 15px;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .chat-message.user {
+            flex-direction: row-reverse;
+        }
+        
+        .message-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .chat-message.user .message-avatar {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .chat-message.assistant .message-avatar {
+            background: var(--secondary);
+            color: white;
+        }
+        
+        .message-content {
+            max-width: 70%;
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        .chat-message.user .message-content {
+            background: var(--primary);
+            color: white;
+            border-bottom-right-radius: 4px;
+        }
+        
+        .chat-message.assistant .message-content {
+            background: var(--bg-main);
+            border-bottom-left-radius: 4px;
+        }
+        
+        .chat-input {
+            padding: 15px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            gap: 10px;
+        }
+        
+        .chat-input input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            outline: none;
+        }
+        
+        .chat-input input:focus {
+            border-color: var(--primary);
+        }
+        
+        /* Utilities */
+        .text-muted { color: var(--text-muted); }
+        .text-success { color: var(--success); }
+        .text-danger { color: var(--danger); }
+        .mt-20 { margin-top: 20px; }
+        .mb-20 { margin-bottom: 20px; }
+        .hidden { display: none !important; }
+        
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            padding: 20px;
+        }
+        
+        .pagination button {
+            padding: 8px 14px;
+            border: 1px solid var(--border);
+            background: var(--bg-white);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .pagination button:hover, .pagination button.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            background: var(--success);
+            color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 2000;
+            display: none;
+            animation: slideIn 0.3s ease;
+        }
+        
+        .toast.show {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .toast.error {
+            background: var(--danger);
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .funnel-board {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+            .main-content {
+                margin-left: 0;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Screen -->
+    <div class="login-screen" id="loginScreen">
+        <div class="login-box">
+            <div class="login-logo">
+                <i class="fas fa-bolt"></i>
+                <h1>ЕНЕРГІЯ</h1>
+                <p class="text-muted">Адмін панель</p>
+            </div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label>Логін</label>
+                    <input type="text" class="form-control" id="loginUsername" value="admin" required>
+                </div>
+                <div class="form-group">
+                    <label>Пароль</label>
+                    <input type="password" class="form-control" id="loginPassword" value="admin123" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">
+                    <i class="fas fa-sign-in-alt"></i> Увійти
+                </button>
+            </form>
+            <p class="text-muted mt-20" style="text-align: center; font-size: 13px;">
+                Перший вхід? Зареєструйте адміна.
+            </p>
+        </div>
+    </div>
+
+    <!-- Main App -->
+    <div class="app-container" id="appContainer">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <i class="fas fa-bolt"></i>
+                    <span>ЕНЕРГІЯ</span>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <div class="nav-section">Головне</div>
+                <a class="nav-item active" data-page="dashboard">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Дашборд</span>
+                </a>
+                
+                <div class="nav-section">Каталог</div>
+                <a class="nav-item" data-page="products">
+                    <i class="fas fa-box"></i>
+                    <span>Товари</span>
+                </a>
+                <a class="nav-item" data-page="categories">
+                    <i class="fas fa-folder"></i>
+                    <span>Категорії</span>
+                </a>
+                <a class="nav-item" data-page="brands">
+                    <i class="fas fa-tags"></i>
+                    <span>Бренди</span>
+                </a>
+                
+                <div class="nav-section">CRM</div>
+                <a class="nav-item" data-page="customers">
+                    <i class="fas fa-users"></i>
+                    <span>Клієнти</span>
+                </a>
+                <a class="nav-item" data-page="leads">
+                    <i class="fas fa-filter"></i>
+                    <span>Воронка продажів</span>
+                    <span class="nav-badge" id="newLeadsCount">0</span>
+                </a>
+                <a class="nav-item" data-page="orders">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Замовлення</span>
+                    <span class="nav-badge" id="newOrdersCount">0</span>
+                </a>
+                
+                <div class="nav-section">AI & Автоматизація</div>
+                <a class="nav-item" data-page="ai-chat">
+                    <i class="fas fa-robot"></i>
+                    <span>AI Чат-бот</span>
+                </a>
+                <a class="nav-item" data-page="ai-tools">
+                    <i class="fas fa-magic"></i>
+                    <span>AI Інструменти</span>
+                </a>
+                
+                <div class="nav-section">Аналітика</div>
+                <a class="nav-item" data-page="analytics">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Звіти</span>
+                </a>
+                
+                <div class="nav-section">Налаштування</div>
+                <a class="nav-item" data-page="users">
+                    <i class="fas fa-user-cog"></i>
+                    <span>Користувачі</span>
+                </a>
+                <a class="nav-item" data-page="settings">
+                    <i class="fas fa-cog"></i>
+                    <span>Налаштування</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-title">
+                    <h1 id="pageTitle">Дашборд</h1>
+                    <p id="pageSubtitle">Огляд показників системи</p>
+                </div>
+                <div class="header-actions">
+                    <div class="header-search">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Пошук...">
+                    </div>
+                    <div class="user-menu" onclick="logout()">
+                        <div class="user-avatar" id="userAvatar">A</div>
+                        <div class="user-info">
+                            <strong id="userName">Admin</strong>
+                            <small id="userRole">Адміністратор</small>
+                        </div>
+                        <i class="fas fa-sign-out-alt text-muted"></i>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content -->
+            <div class="content">
+                <!-- Dashboard -->
+                <section class="page-section active" id="page-dashboard">
+                    <div class="stats-grid" id="statsGrid">
+                        <div class="stat-card">
+                            <div class="stat-card-header">
+                                <div>
+                                    <div class="stat-value" id="stat-orders">0</div>
+                                    <div class="stat-label">Замовлень сьогодні</div>
+                                </div>
+                                <div class="stat-icon blue"><i class="fas fa-shopping-cart"></i></div>
+                            </div>
+                            <div class="stat-change positive"><i class="fas fa-arrow-up"></i> +12% від вчора</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-card-header">
+                                <div>
+                                    <div class="stat-value" id="stat-revenue">0 ₴</div>
+                                    <div class="stat-label">Дохід за місяць</div>
+                                </div>
+                                <div class="stat-icon green"><i class="fas fa-hryvnia-sign"></i></div>
+                            </div>
+                            <div class="stat-change positive"><i class="fas fa-arrow-up"></i> +8% від минулого</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-card-header">
+                                <div>
+                                    <div class="stat-value" id="stat-leads">0</div>
+                                    <div class="stat-label">Нових лідів</div>
+                                </div>
+                                <div class="stat-icon orange"><i class="fas fa-user-plus"></i></div>
+                            </div>
+                            <div class="stat-change positive"><i class="fas fa-arrow-up"></i> +5 сьогодні</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-card-header">
+                                <div>
+                                    <div class="stat-value" id="stat-products">0</div>
+                                    <div class="stat-label">Товарів в каталозі</div>
+                                </div>
+                                <div class="stat-icon red"><i class="fas fa-box"></i></div>
+                            </div>
+                            <div class="stat-change negative"><i class="fas fa-exclamation-triangle"></i> <span id="stat-lowstock">0</span> закінчуються</div>
+                        </div>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px;">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>Останні замовлення</h3>
+                                <button class="btn btn-sm btn-outline" onclick="navigateTo('orders')">Всі замовлення</button>
+                            </div>
+                            <div class="card-body">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Номер</th>
+                                            <th>Клієнт</th>
+                                            <th>Сума</th>
+                                            <th>Статус</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="recentOrdersTable">
+                                        <tr><td colspan="4" class="text-muted" style="text-align:center">Завантаження...</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>Топ товари</h3>
+                            </div>
+                            <div class="card-body" style="padding: 20px;">
+                                <div id="topProductsList">
+                                    <p class="text-muted">Завантаження...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Products -->
+                <section class="page-section" id="page-products">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Товари</h3>
+                            <button class="btn btn-primary" onclick="openProductModal()">
+                                <i class="fas fa-plus"></i> Додати товар
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Артикул</th>
+                                        <th>Назва</th>
+                                        <th>Категорія</th>
+                                        <th>Ціна</th>
+                                        <th>Залишок</th>
+                                        <th>Статус</th>
+                                        <th>Дії</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="productsTable">
+                                    <tr><td colspan="7" class="text-muted" style="text-align:center">Завантаження...</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Categories -->
+                <section class="page-section" id="page-categories">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Категорії</h3>
+                            <button class="btn btn-primary" onclick="openCategoryModal()">
+                                <i class="fas fa-plus"></i> Додати категорію
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Назва</th>
+                                        <th>Slug</th>
+                                        <th>Товарів</th>
+                                        <th>Статус</th>
+                                        <th>Дії</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="categoriesTable">
+                                    <tr><td colspan="6" class="text-muted" style="text-align:center">Завантаження...</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Customers CRM -->
+                <section class="page-section" id="page-customers">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Клієнти</h3>
+                            <button class="btn btn-primary" onclick="openCustomerModal()">
+                                <i class="fas fa-plus"></i> Додати клієнта
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Ім'я / Компанія</th>
+                                        <th>Контакти</th>
+                                        <th>Замовлень</th>
+                                        <th>Сума покупок</th>
+                                        <th>Джерело</th>
+                                        <th>Дії</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="customersTable">
+                                    <tr><td colspan="7" class="text-muted" style="text-align:center">Завантаження...</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Leads Funnel -->
+                <section class="page-section" id="page-leads">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                        <h2>Воронка продажів</h2>
+                        <button class="btn btn-primary" onclick="openLeadModal()">
+                            <i class="fas fa-plus"></i> Новий лід
+                        </button>
+                    </div>
+                    <div class="funnel-board" id="funnelBoard">
+                        <!-- Filled by JS -->
+                    </div>
+                </section>
+
+                <!-- Orders -->
+                <section class="page-section" id="page-orders">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Замовлення</h3>
+                            <div style="display: flex; gap: 10px;">
+                                <select class="form-control" style="width: auto;" id="orderStatusFilter" onchange="loadOrders()">
+                                    <option value="">Всі статуси</option>
+                                    <option value="new">Нові</option>
+                                    <option value="processing">В обробці</option>
+                                    <option value="confirmed">Підтверджені</option>
+                                    <option value="shipped">Відправлені</option>
+                                    <option value="delivered">Доставлені</option>
+                                    <option value="cancelled">Скасовані</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>№ Замовлення</th>
+                                        <th>Клієнт</th>
+                                        <th>Телефон</th>
+                                        <th>Сума</th>
+                                        <th>Статус</th>
+                                        <th>Дата</th>
+                                        <th>Дії</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="ordersTable">
+                                    <tr><td colspan="7" class="text-muted" style="text-align:center">Завантаження...</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- AI Chat -->
+                <section class="page-section" id="page-ai-chat">
+                    <h2 style="margin-bottom: 20px;">AI Чат-бот</h2>
+                    <div class="chat-container">
+                        <div class="chat-box">
+                            <div class="chat-messages" id="chatMessages">
+                                <div class="chat-message assistant">
+                                    <div class="message-avatar"><i class="fas fa-robot"></i></div>
+                                    <div class="message-content">
+                                        Привіт! Я AI-асистент компанії Енергія. Тестуйте мене як клієнт - задавайте питання про товари, доставку, гарантію тощо.
+                                    </div>
+                                </div>
+                            </div>
+                            <form class="chat-input" id="chatForm">
+                                <input type="text" id="chatInput" placeholder="Введіть повідомлення...">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-paper-plane"></i>
+                                </button>
+                            </form>
+                        </div>
+                        <div class="card">
+                            <div class="card-header"><h3>Налаштування бота</h3></div>
+                            <div class="card-body" style="padding: 20px;">
+                                <div class="form-group">
+                                    <label>Режим роботи</label>
+                                    <select class="form-control">
+                                        <option>Консультант</option>
+                                        <option>Продавець</option>
+                                        <option>Підтримка</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>OpenAI API Key</label>
+                                    <input type="password" class="form-control" placeholder="sk-...">
+                                </div>
+                                <button class="btn btn-secondary btn-block">Зберегти</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- AI Tools -->
+                <section class="page-section" id="page-ai-tools">
+                    <h2 style="margin-bottom: 20px;">AI Інструменти</h2>
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+                        <div class="card">
+                            <div class="card-body" style="padding: 30px; text-align: center;">
+                                <div class="stat-icon blue" style="margin: 0 auto 20px; width: 70px; height: 70px; font-size: 28px;">
+                                    <i class="fas fa-file-alt"></i>
+                                </div>
+                                <h3>Генерація описів</h3>
+                                <p class="text-muted" style="margin: 15px 0;">Автоматична генерація SEO-оптимізованих описів товарів</p>
+                                <button class="btn btn-primary" onclick="openAIDescriptionModal()">Генерувати</button>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body" style="padding: 30px; text-align: center;">
+                                <div class="stat-icon green" style="margin: 0 auto 20px; width: 70px; height: 70px; font-size: 28px;">
+                                    <i class="fas fa-lightbulb"></i>
+                                </div>
+                                <h3>Рекомендації</h3>
+                                <p class="text-muted" style="margin: 15px 0;">Персоналізовані рекомендації товарів для клієнтів</p>
+                                <button class="btn btn-success">Налаштувати</button>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body" style="padding: 30px; text-align: center;">
+                                <div class="stat-icon orange" style="margin: 0 auto 20px; width: 70px; height: 70px; font-size: 28px;">
+                                    <i class="fas fa-chart-pie"></i>
+                                </div>
+                                <h3>Аналіз відгуків</h3>
+                                <p class="text-muted" style="margin: 15px 0;">AI-аналіз настроїв та виявлення проблем</p>
+                                <button class="btn btn-warning">Аналізувати</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Analytics -->
+                <section class="page-section" id="page-analytics">
+                    <h2 style="margin-bottom: 20px;">Аналітика та звіти</h2>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-value" id="analytics-conversion">0%</div>
+                            <div class="stat-label">Конверсія лідів</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="analytics-avg-order">0 ₴</div>
+                            <div class="stat-label">Середній чек</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="analytics-customers">0</div>
+                            <div class="stat-label">Всього клієнтів</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="analytics-new-month">0</div>
+                            <div class="stat-label">Нових за місяць</div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Продажі за останні 30 днів</h3>
+                        </div>
+                        <div class="card-body" style="padding: 30px;">
+                            <canvas id="salesChart" height="100"></canvas>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Users -->
+                <section class="page-section" id="page-users">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Користувачі системи</h3>
+                            <button class="btn btn-primary" onclick="openUserModal()">
+                                <i class="fas fa-plus"></i> Додати користувача
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Ім'я</th>
+                                        <th>Email</th>
+                                        <th>Роль</th>
+                                        <th>Статус</th>
+                                        <th>Дії</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="usersTable">
+                                    <tr><td colspan="6" class="text-muted" style="text-align:center">Завантаження...</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Settings -->
+                <section class="page-section" id="page-settings">
+                    <div class="card">
+                        <div class="card-header"><h3>Налаштування системи</h3></div>
+                        <div class="card-body" style="padding: 30px;">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Назва компанії</label>
+                                    <input type="text" class="form-control" value="Енергія">
+                                </div>
+                                <div class="form-group">
+                                    <label>Email компанії</label>
+                                    <input type="email" class="form-control" value="info@energia.ua">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>OpenAI API Key (для AI функцій)</label>
+                                <input type="password" class="form-control" placeholder="sk-...">
+                            </div>
+                            <div class="form-group">
+                                <label>1C URL (для синхронізації)</label>
+                                <input type="text" class="form-control" placeholder="http://1c-server/trade/odata">
+                            </div>
+                            <button class="btn btn-primary">Зберегти налаштування</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Brands -->
+                <section class="page-section" id="page-brands">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Бренди</h3>
+                            <button class="btn btn-primary" onclick="openBrandModal()">
+                                <i class="fas fa-plus"></i> Додати бренд
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Назва</th>
+                                        <th>Slug</th>
+                                        <th>Сайт</th>
+                                        <th>Дії</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="brandsTable">
+                                    <tr><td colspan="5" class="text-muted" style="text-align:center">Завантаження...</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Product Modal -->
+    <div class="modal-overlay" id="productModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 id="productModalTitle">Додати товар</h3>
+                <button class="modal-close" onclick="closeModal('productModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="productForm">
+                    <input type="hidden" id="productId">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Артикул (SKU) *</label>
+                            <input type="text" class="form-control" id="productSku" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Категорія</label>
+                            <select class="form-control" id="productCategory"></select>
+                        </div>
+                    </div>
+                    <div class="form-group full-width">
+                        <label>Назва товару *</label>
+                        <input type="text" class="form-control" id="productName" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Ціна *</label>
+                            <input type="number" class="form-control" id="productPrice" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Стара ціна</label>
+                            <input type="number" class="form-control" id="productPriceOld">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Залишок на складі</label>
+                            <input type="number" class="form-control" id="productStock" value="0">
+                        </div>
+                        <div class="form-group">
+                            <label>Бренд</label>
+                            <select class="form-control" id="productBrand"></select>
+                        </div>
+                    </div>
+                    <div class="form-group full-width">
+                        <label>Опис</label>
+                        <textarea class="form-control" id="productDescription" rows="4"></textarea>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label><input type="checkbox" id="productIsNew"> Новинка</label>
+                        </div>
+                        <div class="form-group">
+                            <label><input type="checkbox" id="productIsHit"> Хіт продажів</label>
+                        </div>
+                        <div class="form-group">
+                            <label><input type="checkbox" id="productIsSale"> Акція</label>
+                        </div>
+                        <div class="form-group">
+                            <label><input type="checkbox" id="productIsActive" checked> Активний</label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="closeModal('productModal')">Скасувати</button>
+                <button class="btn btn-primary" onclick="saveProduct()">Зберегти</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Category Modal -->
+    <div class="modal-overlay" id="categoryModal">
+        <div class="modal" style="max-width: 500px;">
+            <div class="modal-header">
+                <h3>Додати категорію</h3>
+                <button class="modal-close" onclick="closeModal('categoryModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="categoryForm">
+                    <div class="form-group">
+                        <label>Назва категорії *</label>
+                        <input type="text" class="form-control" id="categoryName" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Slug</label>
+                        <input type="text" class="form-control" id="categorySlug">
+                    </div>
+                    <div class="form-group">
+                        <label>Іконка (Font Awesome)</label>
+                        <input type="text" class="form-control" id="categoryIcon" placeholder="fa-folder">
+                    </div>
+                    <div class="form-group">
+                        <label>Опис</label>
+                        <textarea class="form-control" id="categoryDescription" rows="3"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="closeModal('categoryModal')">Скасувати</button>
+                <button class="btn btn-primary" onclick="saveCategory()">Зберегти</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lead Modal -->
+    <div class="modal-overlay" id="leadModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Новий лід</h3>
+                <button class="modal-close" onclick="closeModal('leadModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="leadForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Ім'я *</label>
+                            <input type="text" class="form-control" id="leadName" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Компанія</label>
+                            <input type="text" class="form-control" id="leadCompany">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Телефон</label>
+                            <input type="tel" class="form-control" id="leadPhone">
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" class="form-control" id="leadEmail">
+                        </div>
+                    </div>
+                    <div class="form-group full-width">
+                        <label>Тема запиту</label>
+                        <input type="text" class="form-control" id="leadTitle">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Орієнтовна сума</label>
+                            <input type="number" class="form-control" id="leadValue" value="0">
+                        </div>
+                        <div class="form-group">
+                            <label>Джерело</label>
+                            <select class="form-control" id="leadSource">
+                                <option value="website">Сайт</option>
+                                <option value="phone">Телефон</option>
+                                <option value="email">Email</option>
+                                <option value="telegram">Telegram</option>
+                                <option value="referral">Рекомендація</option>
+                                <option value="advertising">Реклама</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group full-width">
+                        <label>Опис</label>
+                        <textarea class="form-control" id="leadDescription" rows="3"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="closeModal('leadModal')">Скасувати</button>
+                <button class="btn btn-primary" onclick="saveLead()">Зберегти</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastMessage">Успішно збережено</span>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>

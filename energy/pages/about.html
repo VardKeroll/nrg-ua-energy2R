@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Про компанію Енергія - понад 15 років досвіду у сфері систем безпеки">
+    <title>Про нас - Енергія</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .page-hero {
+            background: linear-gradient(135deg, #1a365d 0%, #2d5a9e 100%);
+            padding: 80px 0;
+            text-align: center;
+            color: white;
+        }
+        .page-hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        .breadcrumbs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            font-size: 15px;
+            opacity: 0.9;
+        }
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+        .about-intro {
+            padding: 80px 0;
+        }
+        .about-intro-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .about-intro-text h2 {
+            font-size: 36px;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+        }
+        .about-intro-text p {
+            font-size: 17px;
+            line-height: 1.8;
+            color: var(--text-color);
+            margin-bottom: 20px;
+        }
+        .about-intro-image {
+            background: linear-gradient(135deg, var(--bg-light), var(--border-color));
+            border-radius: var(--radius-xl);
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .about-intro-image i {
+            font-size: 150px;
+            color: var(--primary-color);
+            opacity: 0.3;
+        }
+        .values {
+            padding: 80px 0;
+            background: var(--bg-light);
+        }
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .value-card {
+            background: var(--bg-white);
+            padding: 40px 30px;
+            border-radius: var(--radius-xl);
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+        }
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            border-radius: 50%;
+            color: white;
+            font-size: 32px;
+        }
+        .value-card h3 {
+            font-size: 22px;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+        .value-card p {
+            color: var(--text-color);
+            line-height: 1.7;
+        }
+        .team {
+            padding: 80px 0;
+        }
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+        .team-card {
+            text-align: center;
+        }
+        .team-photo {
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, var(--bg-light), var(--border-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        .team-card:hover .team-photo {
+            transform: scale(1.05);
+        }
+        .team-photo i {
+            font-size: 60px;
+            color: var(--primary-color);
+            opacity: 0.5;
+        }
+        .team-card h4 {
+            font-size: 18px;
+            color: var(--text-dark);
+            margin-bottom: 5px;
+        }
+        .team-card span {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+        .timeline {
+            padding: 80px 0;
+            background: var(--secondary-color);
+            color: white;
+        }
+        .timeline-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .timeline-item {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        .timeline-year {
+            flex: 0 0 100px;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--accent-color);
+        }
+        .timeline-content h4 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        .timeline-content p {
+            opacity: 0.8;
+            line-height: 1.7;
+        }
+        @media (max-width: 992px) {
+            .about-intro-content {
+                grid-template-columns: 1fr;
+            }
+            .values-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 576px) {
+            .values-grid, .team-grid {
+                grid-template-columns: 1fr;
+            }
+            .page-hero h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-content">
+                <div class="top-contacts">
+                    <a href="tel:+380441234567"><i class="fas fa-phone"></i> +38 (044) 123-45-67</a>
+                    <a href="mailto:info@energia.ua"><i class="fas fa-envelope"></i> info@energia.ua</a>
+                </div>
+                <div class="top-info">
+                    <span><i class="fas fa-clock"></i> Пн-Пт: 9:00-18:00</span>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="../index.html" class="logo">
+                    <span class="logo-icon"><i class="fas fa-bolt"></i></span>
+                    <span class="logo-text">ЕНЕРГІЯ</span>
+                </a>
+                
+                <nav class="main-nav" id="mainNav">
+                    <ul class="nav-list">
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link">Продукція <i class="fas fa-chevron-down"></i></a>
+                            <div class="dropdown-menu">
+                                <a href="domophones.html"><i class="fas fa-door-open"></i> Домофони</a>
+                                <a href="video.html"><i class="fas fa-video"></i> Відеоспостереження</a>
+                                <a href="access.html"><i class="fas fa-key"></i> Контроль доступу</a>
+                                <a href="intercom.html"><i class="fas fa-building"></i> Інтеркоми</a>
+                                <a href="locks.html"><i class="fas fa-lock"></i> Електрозамки</a>
+                                <a href="accessories.html"><i class="fas fa-tools"></i> Аксесуари</a>
+                            </div>
+                        </li>
+                        <li class="nav-item"><a href="about.html" class="nav-link">Про нас</a></li>
+                        <li class="nav-item"><a href="services.html" class="nav-link">Послуги</a></li>
+                        <li class="nav-item"><a href="partners.html" class="nav-link">Партнерам</a></li>
+                        <li class="nav-item"><a href="news.html" class="nav-link">Новини</a></li>
+                        <li class="nav-item"><a href="contacts.html" class="nav-link">Контакти</a></li>
+                    </ul>
+                </nav>
+
+                <div class="header-actions">
+                    <button class="search-btn" id="searchBtn" aria-label="Пошук">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <a href="cart.html" class="cart-btn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Меню">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>Про компанію</h1>
+            <div class="breadcrumbs">
+                <a href="../index.html">Головна</a>
+                <span>/</span>
+                <span>Про нас</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Intro -->
+    <section class="about-intro">
+        <div class="container">
+            <div class="about-intro-content">
+                <div class="about-intro-text">
+                    <h2>Компанія NRG — надійний партнер у сфері дистрибуції FMCG</h2>
+                    <p>Заснована у 1999 році, наша компанія забезпечує ринок якісними товарами щоденного попиту, допомагаючи торговим точкам та партнерам отримувати затребувану продукцію швидко, стабільно та на вигідних умовах.</p>
+                    <p>Ми співпрацюємо з провідними виробниками та брендами, пропонуючи широкий асортимент товарів. Наша місія — забезпечувати клієнтів якісним сервісом, безперебійними поставками та ефективними рішеннями для розвитку бізнесу.</p>
+                    <p>Сьогодні компанія NRG — це команда професіоналів, сучасна логістика та багаторічний досвід у дистрибуції. Ми щодня працюємо над тим, щоб наші партнери отримували надійний сервіс, конкурентні ціни та впевненість у кожному замовленні.</p>
+                </div>
+                <div class="about-intro-image">
+                    <i class="fas fa-building"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values -->
+    <section class="values">
+        <div class="container">
+            <div class="section-header">
+                <h2>Наші цінності</h2>
+                <p>Принципи, якими ми керуємось у роботі</p>
+            </div>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Надійність</h3>
+                    <p>Забезпечуємо стабільні поставки та дотримуємось домовленостей, щоб наші партнери завжди були впевнені в наявності товару та строках доставки.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-boxes-stacked"></i>
+                    </div>
+                    <h3>Широкий асортимент</h3>
+                    <p>Пропонуємо затребувані FMCG-товари від перевірених виробників, закриваючи потреби клієнтів у різних категоріях.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Партнерство</h3>
+                    <p>Будуємо довгострокові відносини з клієнтами та постачальниками на основі довіри, прозорості та взаємної вигоди.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Клієнтоорієнтованість</h3>
+                    <p>Гнучко підходимо до завдань кожного партнера, пропонуючи зручні умови співпраці та оперативну підтримку.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Ефективність</h3>
+                    <p>Постійно вдосконалюємо логістику та внутрішні процеси, щоб забезпечувати швидкий сервіс та конкурентні умови.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Професіоналізм</h3>
+                    <p>Наша команда добре знає ринок FMCG та допомагає клієнтам приймати ефективні рішення для розвитку бізнесу.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Енергія в цифрах</h2>
+                    <p class="about-lead">Результати нашої роботи за роки існування компанії</p>
+                    <ul class="about-list">
+                        <li><i class="fas fa-check-circle"></i> Офіційний дистриб'ютор 15+ брендів</li>
+                        <li><i class="fas fa-check-circle"></i> Власний склад 2000+ м²</li>
+                        <li><i class="fas fa-check-circle"></i> Мережа партнерів по всій Україні</li>
+                        <li><i class="fas fa-check-circle"></i> Доставка протягом 1-3 днів</li>
+                    </ul>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-card">
+                        <div class="stat-number" data-count="15">0</div>
+                        <div class="stat-label">років на ринку</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" data-count="5000">0</div>
+                        <div class="stat-label">задоволених клієнтів</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" data-count="10000">0</div>
+                        <div class="stat-label">встановлених систем</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" data-count="50">0</div>
+                        <div class="stat-label">партнерів по Україні</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="timeline">
+        <div class="container">
+            <div class="section-header">
+                <h2>Наша історія</h2>
+                <p>Ключові етапи розвитку компанії</p>
+            </div>
+            <div class="timeline-list">
+                <div class="timeline-item">
+                    <div class="timeline-year">2011</div>
+                    <div class="timeline-content">
+                        <h4>Заснування компанії</h4>
+                        <p>Починаємо діяльність як невеликий магазин домофонного обладнання в Києві.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2014</div>
+                    <div class="timeline-content">
+                        <h4>Розширення асортименту</h4>
+                        <p>Додаємо до каталогу системи відеоспостереження та контролю доступу.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2017</div>
+                    <div class="timeline-content">
+                        <h4>Власний сервісний центр</h4>
+                        <p>Відкриваємо авторизований сервісний центр для обслуговування обладнання.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2020</div>
+                    <div class="timeline-content">
+                        <h4>Онлайн-магазин</h4>
+                        <p>Запускаємо повноцінний інтернет-магазин з доставкою по всій Україні.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2024</div>
+                    <div class="timeline-content">
+                        <h4>Розумний будинок</h4>
+                        <p>Представляємо лінійку рішень для розумного будинку та IoT-інтеграції.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team -->
+    <section class="team">
+        <div class="container">
+            <div class="section-header">
+                <h2>Наша команда</h2>
+                <p>Професіонали, які працюють для вас</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-photo">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h4>Олександр Петренко</h4>
+                    <span>Директор</span>
+                </div>
+                <div class="team-card">
+                    <div class="team-photo">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h4>Марія Коваленко</h4>
+                    <span>Комерційний директор</span>
+                </div>
+                <div class="team-card">
+                    <div class="team-photo">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h4>Ігор Шевченко</h4>
+                    <span>Технічний директор</span>
+                </div>
+                <div class="team-card">
+                    <div class="team-photo">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h4>Наталія Бондар</h4>
+                    <span>Керівник відділу продажів</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="../index.html" class="footer-logo">
+                        <span class="logo-icon"><i class="fas fa-bolt"></i></span>
+                        <span class="logo-text">ЕНЕРГІЯ</span>
+                    </a>
+                    <p>Надійний дистриб'ютор із сильною логістикою, широким асортиментом та фокусом на розвиток партнерів.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+                    </div>
+                </div>
+                <div class="footer-nav">
+                    <h4>Інформація</h4>
+                    <ul>
+                        <li><a href="about.html">Про компанію</a></li>
+                        <li><a href="services.html">Послуги</a></li>
+                        <li><a href="delivery.html">Доставка та оплата</a></li>
+                        <li><a href="warranty.html">Гарантія</a></li>
+                        <li><a href="partners.html">Партнерам</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contacts">
+                    <h4>Контакти</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> м. Київ, вул. Хрещатик, 1</p>
+                    <p><i class="fas fa-phone"></i> <a href="tel:+380441234567">+38 (044) 123-45-67</a></p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:info@energia.ua">info@energia.ua</a></p>
+                    <p><i class="fas fa-clock"></i> Пн-Пт: 9:00-18:00</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Енергія. Всі права захищено.</p>
+                <div class="footer-links">
+                    <a href="privacy.html">Політика конфіденційності</a>
+                    <a href="terms.html">Умови використання</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" aria-label="Вгору">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Домофони від компанії Енергія - широкий вибір аудіо та відеодомофонів">
+    <title>Домофони - Енергія</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .page-hero {
+            background: linear-gradient(135deg, #1a365d 0%, #2d5a9e 100%);
+            padding: 80px 0;
+            text-align: center;
+            color: white;
+        }
+        .page-hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        .breadcrumbs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            font-size: 15px;
+            opacity: 0.9;
+        }
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+        .catalog-section {
+            padding: 60px 0;
+        }
+        .catalog-layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 40px;
+        }
+        .catalog-sidebar {
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+        .filter-block {
+            background: var(--bg-white);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+        .filter-block h3 {
+            font-size: 18px;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .filter-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .filter-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+        .filter-item input {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+        .filter-item label {
+            cursor: pointer;
+            color: var(--text-color);
+        }
+        .filter-item span {
+            margin-left: auto;
+            color: var(--text-light);
+            font-size: 14px;
+        }
+        .price-filter {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .price-input {
+            width: 100%;
+            padding: 10px 12px;
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-md);
+            font-size: 14px;
+        }
+        .price-input:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+        .filter-btn {
+            width: 100%;
+            margin-top: 20px;
+            padding: 12px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        .filter-btn:hover {
+            background: var(--primary-dark);
+        }
+        .catalog-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .catalog-count {
+            font-size: 16px;
+            color: var(--text-light);
+        }
+        .catalog-sort {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .sort-select {
+            padding: 10px 15px;
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-md);
+            font-size: 14px;
+            background: white;
+            cursor: pointer;
+        }
+        .view-btns {
+            display: flex;
+            gap: 5px;
+        }
+        .view-btn {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-md);
+            color: var(--text-light);
+            transition: var(--transition);
+        }
+        .view-btn.active, .view-btn:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+        .catalog-products {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+        .catalog-products.list-view {
+            grid-template-columns: 1fr;
+        }
+        .catalog-products.list-view .product-card {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 25px;
+        }
+        .catalog-products.list-view .product-image {
+            height: 200px;
+        }
+        .catalog-products.list-view .product-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 50px;
+        }
+        .page-btn {
+            min-width: 42px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-md);
+            color: var(--text-color);
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        .page-btn:hover, .page-btn.active {
+            border-color: var(--primary-color);
+            background: var(--primary-color);
+            color: white;
+        }
+        .mobile-filter-btn {
+            display: none;
+            width: 100%;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: var(--bg-white);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-md);
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+        .mobile-filter-btn i {
+            margin-right: 10px;
+        }
+        @media (max-width: 1200px) {
+            .catalog-products {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 992px) {
+            .catalog-layout {
+                grid-template-columns: 1fr;
+            }
+            .catalog-sidebar {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 320px;
+                height: 100vh;
+                background: var(--bg-light);
+                z-index: 2000;
+                padding: 20px;
+                overflow-y: auto;
+                transition: var(--transition);
+            }
+            .catalog-sidebar.active {
+                left: 0;
+            }
+            .mobile-filter-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .close-filter {
+                display: block;
+                margin-bottom: 20px;
+                text-align: right;
+            }
+            .close-filter button {
+                font-size: 24px;
+                color: var(--text-dark);
+            }
+        }
+        @media (max-width: 576px) {
+            .catalog-products {
+                grid-template-columns: 1fr;
+            }
+            .page-hero h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-content">
+                <div class="top-contacts">
+                    <a href="tel:+380441234567"><i class="fas fa-phone"></i> +38 (044) 123-45-67</a>
+                    <a href="mailto:info@energia.ua"><i class="fas fa-envelope"></i> info@energia.ua</a>
+                </div>
+                <div class="top-info">
+                    <span><i class="fas fa-clock"></i> Пн-Пт: 9:00-18:00</span>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="../index.html" class="logo">
+                    <span class="logo-icon"><i class="fas fa-bolt"></i></span>
+                    <span class="logo-text">ЕНЕРГІЯ</span>
+                </a>
+                
+                <nav class="main-nav" id="mainNav">
+                    <ul class="nav-list">
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link">Продукція <i class="fas fa-chevron-down"></i></a>
+                            <div class="dropdown-menu">
+                                <a href="domophones.html"><i class="fas fa-door-open"></i> Домофони</a>
+                                <a href="video.html"><i class="fas fa-video"></i> Відеоспостереження</a>
+                                <a href="access.html"><i class="fas fa-key"></i> Контроль доступу</a>
+                                <a href="intercom.html"><i class="fas fa-building"></i> Інтеркоми</a>
+                                <a href="locks.html"><i class="fas fa-lock"></i> Електрозамки</a>
+                                <a href="accessories.html"><i class="fas fa-tools"></i> Аксесуари</a>
+                            </div>
+                        </li>
+                        <li class="nav-item"><a href="about.html" class="nav-link">Про нас</a></li>
+                        <li class="nav-item"><a href="services.html" class="nav-link">Послуги</a></li>
+                        <li class="nav-item"><a href="partners.html" class="nav-link">Партнерам</a></li>
+                        <li class="nav-item"><a href="news.html" class="nav-link">Новини</a></li>
+                        <li class="nav-item"><a href="contacts.html" class="nav-link">Контакти</a></li>
+                    </ul>
+                </nav>
+
+                <div class="header-actions">
+                    <button class="search-btn" id="searchBtn" aria-label="Пошук">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <a href="cart.html" class="cart-btn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Меню">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>Домофони</h1>
+            <div class="breadcrumbs">
+                <a href="../index.html">Головна</a>
+                <span>/</span>
+                <a href="#">Продукція</a>
+                <span>/</span>
+                <span>Домофони</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catalog -->
+    <section class="catalog-section">
+        <div class="container">
+            <button class="mobile-filter-btn" onclick="toggleFilter()">
+                <i class="fas fa-filter"></i> Фільтри
+            </button>
+            
+            <div class="catalog-layout">
+                <!-- Sidebar -->
+                <aside class="catalog-sidebar" id="catalogSidebar">
+                    <div class="close-filter" style="display: none;">
+                        <button onclick="toggleFilter()"><i class="fas fa-times"></i></button>
+                    </div>
+                    
+                    <div class="filter-block">
+                        <h3>Категорії</h3>
+                        <div class="filter-list">
+                            <div class="filter-item">
+                                <input type="checkbox" id="cat1" checked>
+                                <label for="cat1">Відеодомофони</label>
+                                <span>(45)</span>
+                            </div>
+                            <div class="filter-item">
+                                <input type="checkbox" id="cat2">
+                                <label for="cat2">Аудіодомофони</label>
+                                <span>(18)</span>
+                            </div>
+                            <div class="filter-item">
+                                <input type="checkbox" id="cat3">
+                                <label for="cat3">Викличні панелі</label>
+                                <span>(32)</span>
+                            </div>
+                            <div class="filter-item">
+                                <input type="checkbox" id="cat4">
+                                <label for="cat4">Комплекти</label>
+                                <span>(24)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="filter-block">
+                        <h3>Ціна, грн</h3>
+                        <div class="price-filter">
+                            <input type="number" class="price-input" placeholder="Від" value="500">
+                            <span>—</span>
+                            <input type="number" class="price-input" placeholder="До" value="15000">
+                        </div>
+                    </div>
+
+                    <div class="filter-block">
+                        <h3>Бренд</h3>
+                        <div class="filter-list">
+                            <div class="filter-item">
+                                <input type="checkbox" id="brand1">
+                                <label for="brand1">ENERGIA</label>
+                                <span>(28)</span>
+                            </div>
+                            <div class="filter-item">
+                                <input type="checkbox" id="brand2">
+                                <label for="brand2">Hikvision</label>
+                                <span>(15)</span>
+                            </div>
+                            <div class="filter-item">
+                                <input type="checkbox" id="brand3">
+                                <label for="brand3">Dahua</label>
+                                <span>(12)</span>
+                            </div>
+                            <div class="filter-item">
+                                <input type="checkbox" id="brand4">
+                                <label for="brand4">Slinex</label>
+                                <span>(22)</span>
+                            </div>
+                            <div class="filter-item">
+                                <input type="checkbox" id="brand5">
+                                <label for="brand5">Arny</label>
+                                <span>(18)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="filter-block">
+                        <h3>Розмір екрану</h3>
+                        <div class="filter-list">
+                            <div class="filter-item">
+                                <input type="checkbox" id="size1">
+                                <label for="size1">4.3"</label>
+                                <span>(15)</span>
+                            </div>
+                            <div class="filter-item">
+                                <input type="checkbox" id="size2">
+                                <label for="size2">7"</label>
+                                <span>(32)</span>
+                            </div>
+                            <div class="filter-item">
+                                <input type="checkbox" id="size3">
+                                <label for="size3">10"</label>
+                                <span>(18)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="filter-btn">Застосувати фільтри</button>
+                </aside>
+
+                <!-- Products -->
+                <div class="catalog-main">
+                    <div class="catalog-header">
+                        <div class="catalog-count">Знайдено <strong>119</strong> товарів</div>
+                        <div class="catalog-sort">
+                            <select class="sort-select">
+                                <option>За популярністю</option>
+                                <option>За ціною (зростання)</option>
+                                <option>За ціною (спадання)</option>
+                                <option>За новизною</option>
+                                <option>За рейтингом</option>
+                            </select>
+                            <div class="view-btns">
+                                <button class="view-btn active" onclick="setView('grid')"><i class="fas fa-th"></i></button>
+                                <button class="view-btn" onclick="setView('list')"><i class="fas fa-list"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="catalog-products" id="catalogProducts">
+                        <div class="product-card">
+                            <div class="product-image">
+                                <i class="fas fa-door-open"></i>
+                                <span class="product-badge new">Новинка</span>
+                                <div class="product-actions">
+                                    <button class="product-action-btn"><i class="far fa-heart"></i></button>
+                                    <button class="product-action-btn"><i class="fas fa-exchange-alt"></i></button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-category">Відеодомофони</div>
+                                <h3 class="product-title"><a href="#">ENERGIA HD-700 Pro відеодомофон 7"</a></h3>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <span>(24)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="price-current">4 599 грн</span>
+                                </div>
+                                <button class="product-buy">Купити</button>
+                            </div>
+                        </div>
+
+                        <div class="product-card">
+                            <div class="product-image">
+                                <i class="fas fa-door-open"></i>
+                                <span class="product-badge hit">Хіт</span>
+                                <div class="product-actions">
+                                    <button class="product-action-btn"><i class="far fa-heart"></i></button>
+                                    <button class="product-action-btn"><i class="fas fa-exchange-alt"></i></button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-category">Відеодомофони</div>
+                                <h3 class="product-title"><a href="#">ENERGIA Classic 7" IPS екран</a></h3>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <span>(89)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="price-current">2 999 грн</span>
+                                </div>
+                                <button class="product-buy">Купити</button>
+                            </div>
+                        </div>
+
+                        <div class="product-card">
+                            <div class="product-image">
+                                <i class="fas fa-door-open"></i>
+                                <span class="product-badge sale">-25%</span>
+                                <div class="product-actions">
+                                    <button class="product-action-btn"><i class="far fa-heart"></i></button>
+                                    <button class="product-action-btn"><i class="fas fa-exchange-alt"></i></button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-category">Відеодомофони</div>
+                                <h3 class="product-title"><a href="#">ENERGIA Lite 4.3" компактний</a></h3>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <span>(34)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="price-current">1 899 грн</span>
+                                    <span class="price-old">2 499 грн</span>
+                                </div>
+                                <button class="product-buy">Купити</button>
+                            </div>
+                        </div>
+
+                        <div class="product-card">
+                            <div class="product-image">
+                                <i class="fas fa-door-open"></i>
+                                <div class="product-actions">
+                                    <button class="product-action-btn"><i class="far fa-heart"></i></button>
+                                    <button class="product-action-btn"><i class="fas fa-exchange-alt"></i></button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-category">Відеодомофони</div>
+                                <h3 class="product-title"><a href="#">Slinex SM-07MN WiFi домофон</a></h3>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <span>(56)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="price-current">5 499 грн</span>
+                                </div>
+                                <button class="product-buy">Купити</button>
+                            </div>
+                        </div>
+
+                        <div class="product-card">
+                            <div class="product-image">
+                                <i class="fas fa-door-open"></i>
+                                <div class="product-actions">
+                                    <button class="product-action-btn"><i class="far fa-heart"></i></button>
+                                    <button class="product-action-btn"><i class="fas fa-exchange-alt"></i></button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-category">Комплекти</div>
+                                <h3 class="product-title"><a href="#">Комплект ENERGIA Home + панель</a></h3>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <span>(28)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="price-current">3 799 грн</span>
+                                </div>
+                                <button class="product-buy">Купити</button>
+                            </div>
+                        </div>
+
+                        <div class="product-card">
+                            <div class="product-image">
+                                <i class="fas fa-door-open"></i>
+                                <span class="product-badge new">Новинка</span>
+                                <div class="product-actions">
+                                    <button class="product-action-btn"><i class="far fa-heart"></i></button>
+                                    <button class="product-action-btn"><i class="fas fa-exchange-alt"></i></button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-category">Відеодомофони</div>
+                                <h3 class="product-title"><a href="#">ENERGIA Smart 10" Full HD</a></h3>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <span>(12)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="price-current">7 999 грн</span>
+                                </div>
+                                <button class="product-buy">Купити</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pagination">
+                        <button class="page-btn"><i class="fas fa-chevron-left"></i></button>
+                        <button class="page-btn active">1</button>
+                        <button class="page-btn">2</button>
+                        <button class="page-btn">3</button>
+                        <button class="page-btn">4</button>
+                        <button class="page-btn">...</button>
+                        <button class="page-btn">12</button>
+                        <button class="page-btn"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="../index.html" class="footer-logo">
+                        <span class="logo-icon"><i class="fas fa-bolt"></i></span>
+                        <span class="logo-text">ЕНЕРГІЯ</span>
+                    </a>
+                    <p>Надійний дистриб'ютор із сильною логістикою, широким асортиментом та фокусом на розвиток партнерів.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+                    </div>
+                </div>
+                <div class="footer-nav">
+                    <h4>Інформація</h4>
+                    <ul>
+                        <li><a href="about.html">Про компанію</a></li>
+                        <li><a href="services.html">Послуги</a></li>
+                        <li><a href="delivery.html">Доставка та оплата</a></li>
+                        <li><a href="warranty.html">Гарантія</a></li>
+                        <li><a href="partners.html">Партнерам</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contacts">
+                    <h4>Контакти</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> м. Київ, вул. Хрещатик, 1</p>
+                    <p><i class="fas fa-phone"></i> <a href="tel:+380441234567">+38 (044) 123-45-67</a></p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:info@energia.ua">info@energia.ua</a></p>
+                    <p><i class="fas fa-clock"></i> Пн-Пт: 9:00-18:00</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Енергія. Всі права захищено.</p>
+                <div class="footer-links">
+                    <a href="privacy.html">Політика конфіденційності</a>
+                    <a href="terms.html">Умови використання</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" aria-label="Вгору">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script src="../js/main.js"></script>
+    <script>
+        function toggleFilter() {
+            document.getElementById('catalogSidebar').classList.toggle('active');
+            document.body.style.overflow = document.getElementById('catalogSidebar').classList.contains('active') ? 'hidden' : '';
+        }
+
+        function setView(view) {
+            const products = document.getElementById('catalogProducts');
+            const btns = document.querySelectorAll('.view-btn');
+            
+            btns.forEach(btn => btn.classList.remove('active'));
+            event.target.closest('.view-btn').classList.add('active');
+            
+            if (view === 'list') {
+                products.classList.add('list-view');
+            } else {
+                products.classList.remove('list-view');
+            }
+        }
+    </script>
+</body>
+</html>
